@@ -1,5 +1,7 @@
-// import axios from "axios";
+const express = require("express");
+const router = express.Router();
+const authRouter = require("./auth");
 
-// export default {
+router.use("/auth", authRouter);
 
-// };
+module.exports = router;
