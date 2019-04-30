@@ -15,10 +15,7 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  prefs: {
-    type: Schema.Types.ObjectId,
-    ref: "Prefs"
-  }
+  prefs: Array
 });
 
 const User = mongoose.model("User", UserSchema);
