@@ -8,6 +8,7 @@ connectDB();
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 
+//body parser middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
