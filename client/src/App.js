@@ -9,7 +9,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Logo, LoginBtn, RegisterBtn } from './components';
 
 function App() {
-  
   return (
     <Router>
       <div className="App">
@@ -19,16 +18,14 @@ function App() {
           <RegisterBtn />
         </nav>
         <header className="App-header">
-          <p>
-            <Switch>
-              <Route exact path="/" component={About} />
-              <Route path="/build" component={Build} />
-              <Route path="/edit" component={EditAccount} />
-              <Route path="/login" component={Login} />
-              <Route path="/preferences" component={Prefs} />
-              <Route path="/register" component={Register} />
-            </Switch>
-          </p>
+          <Switch>
+            <Route exact path="/" component={About} />
+            <Route path="/build" component={Build} />
+            <Route path="/edit" component={EditAccount} />
+            <Route path="/login" component={Login} />
+            <Route path="/preferences" component={Prefs} />
+            <Route path="/register" component={Register} />
+          </Switch>
         </header>
       </div>
     </Router>
