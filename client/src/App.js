@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Logo, LoginBtn, RegisterBtn } from './components';
 
+
 function App() {
   return (
     <Router>
@@ -17,7 +18,8 @@ function App() {
           <LoginBtn />
           <RegisterBtn />
         </nav>
-        <header className="App-header">
+        <div className="App-header">
+
           <Switch>
             <Route exact path="/" component={About} />
             <Route path="/build" component={Build} />
@@ -26,7 +28,9 @@ function App() {
             <Route path="/preferences" component={Prefs} />
             <Route path="/register" component={Register} />
           </Switch>
-        </header>
+
+        </div>
+
       </div>
     </Router>
   );
