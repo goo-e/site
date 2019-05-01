@@ -1,11 +1,17 @@
 import axios from "axios";
 
-export default {
-    addUser: userData => axios.post("/api/users", userData),
-    getUser: id => axios.get(`/api/users/${id}`)
-    //update user 
-    //- password
-    //- email
-    //- query prefs
-    //delete user
-}
+const userFunctions = {
+  addUser: (userData, config) => {
+    axios.post("/api/user", userData, config).then(data => {
+      console.log(data);
+    });
+  },
+  getUser: id => axios.get(`/api/users/${id}`)
+  //update user
+  //- password
+  //- email
+  //- query prefs
+  //delete user
+};
+
+export default userFunctions;
