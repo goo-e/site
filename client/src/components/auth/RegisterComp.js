@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import userFunctions from "../../utils/API";
 const { addUser } = userFunctions;
+import { Consumer } from "../../context";
 
 const RegisterComp = () => {
   const [formData, setFormData] = useState({
@@ -42,58 +43,65 @@ const RegisterComp = () => {
     }
   };
   return (
-    <Fragment>
-      <h1>Sign Up</h1>
-      <p>Create Your Account</p>
-      <form onSubmit={e => onSubmit(e)}>
-        <div>
-          <input
-            type="text"
-            placeholder="Name"
-            name="name"
-            value={name}
-            onChange={e => onChange(e)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
-            value={email}
-            onChange={e => onChange(e)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            minLength="8"
-            value={password}
-            onChange={e => onChange(e)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            name="password2"
-            minLength="8"
-            value={password2}
-            onChange={e => onChange(e)}
-            required
-          />
-        </div>
-        <input type="submit" value="Register" />
-      </form>
-      <p>
-        Already have an account? <Link to="/login">Sign In</Link>
-      </p>
-    </Fragment>
+    <Consumer>
+      {value => {
+        const { dispatch } = value;
+        return (
+          <Fragment>
+            <h1>Sign Up</h1>
+            <p>Create Your Account</p>
+            <form onSubmit={e => onSubmit(e)}>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  value={name}
+                  onChange={e => onChange(e)}
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  name="email"
+                  value={email}
+                  onChange={e => onChange(e)}
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  minLength="8"
+                  value={password}
+                  onChange={e => onChange(e)}
+                  required
+                />
+              </div>
+              <div>
+                <input
+                  type="password"
+                  placeholder="Confirm Password"
+                  name="password2"
+                  minLength="8"
+                  value={password2}
+                  onChange={e => onChange(e)}
+                  required
+                />
+              </div>
+              <input type="submit" value="Register" />
+            </form>
+            <p>
+              Already have an account? <Link to="/login">Sign In</Link>
+            </p>
+          </Fragment>
+        );
+      }}
+    </Consumer>
   );
 };
 
