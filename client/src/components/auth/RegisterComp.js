@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { Link } from "react-router-dom";
 import userFunctions from "../../utils/API";
 const { addUser } = userFunctions;
 
@@ -90,7 +91,7 @@ const RegisterComp = () => {
         <input type="submit" value="Register" />
       </form>
       <p>
-        Already have an account? <a href="login.html">Sign In</a>
+        Already have an account? <Link to="/login">Sign In</Link>
       </p>
     </Fragment>
   );

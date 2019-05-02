@@ -2,11 +2,15 @@ import axios from "axios";
 
 const userFunctions = {
   addUser: (userData, config) => {
-    axios.post("/api/user", userData, config).then(data => {
-      console.log(data);
+    axios.post("/api/user", userData, config).then(res => {
+      console.log(res.data);
     });
   },
-  getUser: id => axios.get(`/api/users/${id}`)
+  checkUser: (email, config) => {
+    axios.post("/api/auth", email, config).then(res => {
+      console.log(res.data);
+    });
+  }
   //update user
   //- password
   //- email
