@@ -25,7 +25,7 @@ function App() {
             <Route path="/build" component={Build} />
             <Route path="/edit" component={EditAccount} />
             <Route path="/login" component={Login} />
-            <Route path="/preferences" component={Prefs} />
+            <Route path="/prefs" component={Prefs} />
             <Route path="/register" component={Register} />
           </Switch>
 
