@@ -11,14 +11,14 @@ const LoginComp = () => {
     password: ""
   });
   const { email, password } = formData;
-  const onChange = e =>
+  const onChange = event =>
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [event.target.name]: event.target.value
     });
 
-  const onSubmit = async e => {
-    e.preventDefault();
+  const onSubmit = async event => {
+    event.preventDefault();
     console.log("SUCCESS");
     const User = {
       email,
@@ -45,14 +45,14 @@ const LoginComp = () => {
           <Fragment>
             <h1>Sign In</h1>
             <p>Sign into your account</p>
-            <form onSubmit={e => onSubmit(e)}>
+            <form onSubmit={event => onSubmit(event)}>
               <div>
                 <input
                   type="email"
                   placeholder="Email Address"
                   name="email"
                   value={email}
-                  onChange={e => onChange(e)}
+                  onChange={event => onChange(event)}
                   required
                 />
               </div>
@@ -63,7 +63,7 @@ const LoginComp = () => {
                   name="password"
                   minLength="8"
                   value={password}
-                  onChange={e => onChange(e)}
+                  onChange={event => onChange(event)}
                   required
                 />
               </div>

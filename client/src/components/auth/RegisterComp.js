@@ -12,14 +12,14 @@ const RegisterComp = () => {
     password2: ""
   });
   const { name, email, password, password2 } = formData;
-  const onChange = e =>
+  const onChange = event =>
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [event.target.name]: event.target.value
     });
 
-  const onSubmit = async e => {
-    e.preventDefault();
+  const onSubmit = async event => {
+    event.preventDefault();
     if (password !== password2) {
       console.log("Passwords do not match");
     } else {
@@ -50,14 +50,14 @@ const RegisterComp = () => {
           <Fragment>
             <h1>Sign Up</h1>
             <p>Create Your Account</p>
-            <form onSubmit={e => onSubmit(e)}>
+            <form onSubmit={event => onSubmit(event)}>
               <div>
                 <input
                   type="text"
                   placeholder="Name"
                   name="name"
                   value={name}
-                  onChange={e => onChange(e)}
+                  onChange={event => onChange(event)}
                   required
                 />
               </div>
@@ -67,7 +67,7 @@ const RegisterComp = () => {
                   placeholder="Email Address"
                   name="email"
                   value={email}
-                  onChange={e => onChange(e)}
+                  onChange={event => onChange(event)}
                   required
                 />
               </div>
@@ -78,7 +78,7 @@ const RegisterComp = () => {
                   name="password"
                   minLength="8"
                   value={password}
-                  onChange={e => onChange(e)}
+                  onChange={event => onChange(event)}
                   required
                 />
               </div>
@@ -89,7 +89,7 @@ const RegisterComp = () => {
                   name="password2"
                   minLength="8"
                   value={password2}
-                  onChange={e => onChange(e)}
+                  onChange={event => onChange(event)}
                   required
                 />
               </div>
