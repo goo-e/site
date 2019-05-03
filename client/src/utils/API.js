@@ -15,7 +15,8 @@ const userFunctions = {
       const cookies = new Cookies();
       cookies.set("token", token);
     });
-  }
+  },
+  
   //update user
   //- password
   //- email
