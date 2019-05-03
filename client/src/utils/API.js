@@ -3,12 +3,14 @@ import axios from "axios";
 const userFunctions = {
   addUser: (userData, config) => {
     axios.post("/api/user", userData, config).then(res => {
-      console.log(res.data);
+      const token = res.data.token;
+      localStorage.setItem("token", token);
     });
   },
   checkUser: (email, config) => {
     axios.post("/api/auth", email, config).then(res => {
-      console.log(res.data);
+      const token = res.data.token;
+      localStorage.setItem("token", token);
     });
   }
   //update user

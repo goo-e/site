@@ -4,12 +4,13 @@ const Context = React.createContext();
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "DELETE_CONTACT":
+    case "STORE_USER":
       return {
         ...state,
-        contacts: state.contacts.filter(
-          contact => contact.id !== action.payload
-        )
+        user: {
+          name: action.payload.name,
+          email: action.payload.email
+        }
       };
     default:
       return state;
@@ -18,6 +19,10 @@ const reducer = (state, action) => {
 
 export class Provider extends Component {
   state = {
+    user: {
+      userName: "",
+      userEmail: ""
+    },
     dispatch: action => {
       this.setState(state => reducer(state, action));
     }

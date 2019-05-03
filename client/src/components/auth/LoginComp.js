@@ -1,12 +1,11 @@
 import React, { Fragment, useState } from "react";
+import { Consumer } from "../../context";
 import { Link } from "react-router-dom";
 import userFunctions from "../../utils/API";
 const { checkUser } = userFunctions;
-import { Consumer } from "../../context";
 
 const LoginComp = () => {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: ""
   });
@@ -17,9 +16,8 @@ const LoginComp = () => {
       [event.target.name]: event.target.value
     });
 
-  const onSubmit = async event => {
+  const onSubmit = async (event, dispatch) => {
     event.preventDefault();
-    console.log("SUCCESS");
     const User = {
       email,
       password
@@ -36,16 +34,18 @@ const LoginComp = () => {
     } catch (err) {
       console.error(err.response.data);
     }
+    dispatch({ type: "STORE_USER", payload: User });
   };
   return (
     <Consumer>
       {value => {
-        const { dispatch } = value;
+        const { dispatch, user } = value;
+        const { userName, userEmail } = user;
         return (
           <Fragment>
-            <h1>Sign In</h1>
+            <h1>Sign In {userName}</h1>
             <p>Sign into your account</p>
-            <form onSubmit={event => onSubmit(event)}>
+            <form onSubmit={event => onSubmit(event, dispatch)}>
               <div>
                 <input
                   type="email"

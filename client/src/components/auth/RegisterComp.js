@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
+import { Consumer } from "../../context";
 import { Link } from "react-router-dom";
 import userFunctions from "../../utils/API";
 const { addUser } = userFunctions;
-import { Consumer } from "../../context";
 
 const RegisterComp = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +18,7 @@ const RegisterComp = () => {
       [event.target.name]: event.target.value
     });
 
-  const onSubmit = async event => {
+  const onSubmit = async (event, dispatch) => {
     event.preventDefault();
     if (password !== password2) {
       console.log("Passwords do not match");
@@ -40,6 +40,7 @@ const RegisterComp = () => {
       } catch (err) {
         console.error(err.response.data);
       }
+      dispatch({ type: "STORE_USER", payload: newUser });
     }
   };
   return (
@@ -50,7 +51,7 @@ const RegisterComp = () => {
           <Fragment>
             <h1>Sign Up</h1>
             <p>Create Your Account</p>
-            <form onSubmit={event => onSubmit(event)}>
+            <form onSubmit={event => onSubmit(event, dispatch)}>
               <div>
                 <input
                   type="text"
