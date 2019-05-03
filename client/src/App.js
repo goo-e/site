@@ -11,24 +11,24 @@ import { Provider } from "./context";
 
 function App() {
   return (
-    <Provider>
-      <Router>
-        <div className="App">
-          <nav>
-            <Logo />
-            <LoginBtn />
-            <RegisterBtn />
-          </nav>
-          <div className="App-header">
-            <Switch>
-              <Route exact path="/" component={About} />
-              <Route path="/build" component={Build} />
-              <Route path="/edit" component={EditAccount} />
-              <Route path="/login" component={Login} />
-              <Route path="/preferences" component={Prefs} />
-              <Route path="/register" component={Register} />
-            </Switch>
-          </div>
+  <Provider>
+    <Router>
+      <div className="App">
+        <nav>
+          <Logo />
+          <LoginBtn />
+          <RegisterBtn />
+        </nav>
+      <div className="App-header">
+
+          <Switch>
+            <Route exact path="/" component={About} />
+            <Route path="/build" component={Build} />
+            <Route path="/edit" component={EditAccount} />
+            <Route path="/login" component={Login} />
+            <Route path="/prefs" component={Prefs} />
+            <Route path="/register" component={Register} />
+          </Switch>
         </div>
       </Router>
     </Provider>
