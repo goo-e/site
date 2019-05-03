@@ -39,11 +39,11 @@ const LoginComp = () => {
   return (
     <Consumer>
       {value => {
-        const { dispatch, user } = value;
-        const { userName, userEmail } = user;
+        const { dispatch } = value;
+
         return (
           <Fragment>
-            <h1>Sign In {userName}</h1>
+            <h1>Sign In</h1>
             <p>Sign into your account</p>
             <form onSubmit={event => onSubmit(event, dispatch)}>
               <div>
