@@ -30,8 +30,9 @@ function App() {
             <Route path="/register" component={Register} />
           </Switch>
         </div>
-      </Router>
-    </Provider>
+      </div>
+    </Router>
+  </Provider>
   );
 }
 
