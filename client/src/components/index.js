@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import RegisterBtn from "./RegisterBtn";
 import SaveAccountChanges from "./SaveAccountChanges";
 import SavePrefs from "./SavePrefs";
+import SubmitQuery from "./SubmitQuery";
 
 export {
     AttemptLogin,
@@ -15,5 +16,6 @@ export {
     Logo,
     RegisterBtn,
     SaveAccountChanges,
-    SavePrefs
+    SavePrefs,
+    SubmitQuery
 };

@@ -1,23 +1,45 @@
 import React, { Component } from "react";
-import { FormInput } from "../components";
+import { FormInput, SubmitQuery } from "../components";
 
 // An array containing every parameter on the menu.
 const paramsArr = [
     {
         name: "multiTerm",
-        value: ""
+        type: "FormInput",
+        value: "",
+        querySegment: value => {return value ? `&as_q=${value.replace(/\s+/g, "+")}` : ""}
     },
     {
         name: "exactMatch",
-        value: ""
+        type: "FormInput",
+        value: "",
+        querySegment: value => {return value ? `&as_epq=${value.replace(/\s+/g, "+")}` : ""}
     },
     {
         name: "anyOfThese",
-        value: ""
+        type: "FormInput",
+        value: "",
+        querySegment: value => {return value ? `&as_oq=%28${value.replace(/\s+/g, "+")}%29` : ""}
     },
     {
         name: "noneOfThese",
-        value: ""
+        type: "FormInput",
+        value: "",
+        querySegment: value => {return value ? `&as_eq=${value.replace(/\s+/g, "+")}` : ""}
+    },
+    {
+        name: "numericalRange",
+        type: "Range",
+        value: ["", ""],
+        querySegment: value => {
+            const querySegment = value.map((val, index) => {
+                if (index === 0) {
+                    return val ? `&as_nlo=${val}` : "";
+                }
+                return val ? `&as_nhi=${val}` : "";
+            }).join("");
+            return querySegment;
+        }
     }
 ];
 
@@ -26,20 +48,28 @@ const paramsArr = [
 const prefsArr = [
     {
         name: "multiTerm",
-        value: ""
+        type: "FormInput",
+        value: "",
+        querySegment: value => {return value ? `&as_q=${value.replace(/\s+/g, "+")}` : ""}
     },
     {
         name: "exactMatch",
-        value: ""
+        type: "FormInput",
+        value: "",
+        querySegment: value => {return value ? `&as_epq=${value.replace(/\s+/g, "+")}` : ""}
     },
     {
         name: "anyOfThese",
-        value: ""
+        type: "FormInput",
+        value: "",
+        querySegment: value => {return value ? `&as_oq=%28${value.replace(/\s+/g, "+")}%29` : ""}
     },
     {
         name: "noneOfThese",
-        value: ""
-    }
+        type: "FormInput",
+        value: "",
+        querySegment: value => {return value ? `&as_eq=${value.replace(/\s+/g, "+")}` : ""}
+    },
 ];
 
 class Build extends Component {
@@ -54,7 +84,25 @@ class Build extends Component {
 
     addBtn(param) {
         const updatedParams = this.state.params;
-        const newParam = { name: param.name, value: "" };
+        console.log(param.value);
+        console.log(param.type);
+        let value;
+        switch(param.type) {
+            case "FormInput":
+                value = "";
+                break;
+            case "Range":
+                value = ["", ""];
+                break;
+            default:
+                return;
+        }
+        const newParam = {
+            name: param.name,
+            type: param.type,
+            value: value,
+            querySegment: param.querySegment
+        };
         updatedParams.push(newParam);
         this.setState({
             params: updatedParams
@@ -78,7 +126,45 @@ class Build extends Component {
         });
     }
 
-    handleParamChange = event => {
+    renderSwitch(type) {
+        // Here we use the unique editKey to target the param currently being edited by the user and save it for later reference.
+        // On deletion of the corresponding param, we set the value of our edited object to undefined in the case of a FormInput param type
+        const edited = this.state.params[this.state.editKey] || { value: undefined };
+        // or an array of two undefined elements in the case of a Range param type.
+        const editedRange = this.state.params[this.state.editKey] || { value: [undefined, undefined] };
+        switch(type) {
+            case "FormInput":
+                return (
+                    <FormInput
+                        name={this.state.edit.name}
+                        value={edited.value}
+                        onChange={this.handleInputChange}
+                        placeholder={edited.value}
+                    />
+                );
+            case "Range":
+                return (
+                    <div>
+                        <FormInput
+                            name={this.state.edit.name + "Low"}
+                            value={editedRange.value[0]}
+                            onChange={event => this.handleRangeChange(event, 0)}
+                            placeholder={editedRange.value[0]}
+                        />
+                        <FormInput
+                            name={this.state.edit.name + "High"}
+                            value={editedRange.value[1]}
+                            onChange={event => this.handleRangeChange(event, 1)}
+                            placeholder={editedRange.value[1]}
+                        />
+                    </div>
+                );
+            default:
+                return;
+        }
+    }
+
+    handleInputChange = event => {
         const { value } = event.target;
         const updatedParams = this.state.params;
         updatedParams[this.state.editKey].value = value;
@@ -88,10 +174,23 @@ class Build extends Component {
         console.log(this.state);
     };
 
+    handleRangeChange = (event, index) => {
+        const { value } = event.target;
+        const updatedParams = this.state.params;
+        updatedParams[this.state.editKey].value[index] = value;
+        this.setState({
+            params: updatedParams
+        });
+        console.log(this.state);
+    };
+
+    buildQuery() {
+        const queryURL = "http://www.google.com/search?q=" + this.state.params.map(param => param.querySegment(param.value)).join("");
+        console.log(queryURL);
+        return queryURL;
+    }
+
     render() {
-        // Here we use the unique editKey to target the param currently being edited by the user and save it for later reference.
-        // On deletion of the corresponding param, we set the value of our edited object to undefined.
-        const edited = this.state.params[this.state.editKey] || { value: undefined };
         return (
             <div>
                 <div>
@@ -104,26 +203,18 @@ class Build extends Component {
                     Build Your Query
                     {this.state.params.map((param, index) => {
                         return (
-                            <button key={index} name={param.name}>
-                                <span onClick={() => this.edit(param, index)}>{param.name}</span>
-                                <span onClick={() => this.removeBtn(index)}>X</span>
-                            </button>
+                            <div>
+                                <button key={index} name={param.name}>
+                                    <span onClick={() => this.edit(param, index)}>{param.name}</span>
+                                    <span onClick={() => this.removeBtn(index)}>X</span>
+                                </button>
+                                {this.state.edit === param ? this.renderSwitch(param.type) : console.log("No param selected.")}
+                            </div>
                         );
                     })}
                 </div>
-                <div>
-                    {this.state.edit ?
-                        <span>
-                            {this.state.edit.name}:
-                             <FormInput
-                                name={this.state.edit.name}
-                                value={edited.value}
-                                onChange={this.handleParamChange}
-                                placeholder={edited.value}
-                            />
-                        </span> :
-                        console.log("No param selected.")}
-                </div>
+                Click "Submit" once you're done setting all your desired parameters:
+                <SubmitQuery query={this.buildQuery()} />
             </div>
         );
     }
