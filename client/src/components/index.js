@@ -6,6 +6,7 @@ import Logo from "./Logo";
 import RegisterBtn from "./RegisterBtn";
 import SaveAccountChanges from "./SaveAccountChanges";
 import SavePrefs from "./SavePrefs";
+import SelectInput from "./SelectInput";
 import SubmitQuery from "./SubmitQuery";
 
 export {
@@ -17,5 +18,6 @@ export {
     RegisterBtn,
     SaveAccountChanges,
     SavePrefs,
+    SelectInput,
     SubmitQuery
 };
