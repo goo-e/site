@@ -144,7 +144,7 @@ const queryParams = {
         'Dominican Republic': 'DO',
         'East Timor': 'TL',
         'Ecuador': 'EC',
-        'EgyptEG',
+        'Egypt': 'EG',
         'El Salvador': 'SV',
         'Equatorial Guinea': 'GQ',
         'Eritrea': 'ER',
