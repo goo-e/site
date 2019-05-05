@@ -1,25 +1,7 @@
 import React, { Component } from "react";
 import { SavePrefs } from "../components";
 
-// An array containing every parameter on the menu.
-const paramsArr = [
-    {
-        name: "multiTerm",
-        value: ""
-    },
-    {
-        name: "exactMatch",
-        value: ""
-    },
-    {
-        name: "anyOfThese",
-        value: ""
-    },
-    {
-        name: "noneOfThese",
-        value: ""
-    }
-];
+const paramsArr = require("../paramsArr");
 
 // An array containing only those parameters that are set to be displayed by default in the user's prefs.
 // Until we get the user-specific information from the database, we will use the following as the default/placeholder:

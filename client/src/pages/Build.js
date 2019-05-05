@@ -1,45 +1,19 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { FormInput, SelectInput, SubmitQuery } from "../components";
+import { Consumer } from "../context";
+import userFunctions from "../utils/API";
 
 const paramsArr = require("../paramsArr");
-
-// An array containing only those parameters that are set to be displayed by default in the user's prefs.
-// Until we get the user-specific information from the database, we will use the following as the default/placeholder:
-const prefsArr = [
-    {
-        name: "Search Term(s)",
-        type: "FormInput",
-        value: "",
-        querySegment: value => {return value ? `&as_q=${value.replace(/\s+/g, "+")}` : ""}
-    },
-    {
-        name: "Exact Match",
-        type: "FormInput",
-        value: "",
-        querySegment: value => {return value ? `&as_epq=${value.replace(/\s+/g, "+")}` : ""}
-    },
-    {
-        name: "Include Any",
-        type: "FormInput",
-        value: "",
-        querySegment: value => {return value ? `&as_oq=%28${value.replace(/\s+/g, "+")}%29` : ""}
-    },
-    {
-        name: "Exclude Each",
-        type: "FormInput",
-        value: "",
-        querySegment: value => {return value ? `&as_eq=${value.replace(/\s+/g, "+")}` : ""}
-    },
-];
 
 class Build extends Component {
     state = {
         // The array of param objects (each of which includes a name describing its behavior and a value representing the user's input):
-        params: prefsArr,
+        params: [],
         // The param whose input the user is currently editing:
         edit: "",
         // The index number by which we will target the unique param button (as distinguished from others with the same name) the user is currently editing:
-        editKey: ""
+        editKey: "",
+        loadedPrefs: false
     };
 
     addBtn(param) {
@@ -210,30 +184,44 @@ class Build extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    Choose Your Parameters
-                    {paramsArr.map((param, index) => {
-                        return <button key={index} name={param.name} onClick={() => this.addBtn(param)}>{param.name}</button>
-                    })}
-                </div>
-                <div>
-                    Build Your Query
-                    {this.state.params.map((param, index) => {
-                        return (
+            <Consumer>
+                {value => {
+                    const { dispatch, isAuthenticated, getPrefs } = value;
+                    const userPrefs = getPrefs();
+                    if (isAuthenticated && !this.state.loadedPrefs) {
+                        this.setState({
+                            params: userPrefs,
+                            loadedPrefs: true
+                        });
+                    }
+                    return (
+                        <Fragment>
                             <div>
-                                <button key={index} name={param.name}>
-                                    <span onClick={() => this.state.edit !== param ? this.edit(param, index) : this.edit("", "")}>{param.name}</span>
-                                    <span onClick={() => this.removeBtn(index)}>X</span>
-                                </button>
-                                {this.state.edit === param ? this.renderSwitch(param.type) : console.log("No param selected.")}
+                                <h2>Choose Your Parameters</h2>
+                                {paramsArr.map((param, index) => {
+                                    return <button key={index} name={param.name} onClick={() => this.addBtn(param)}>{param.name}</button>
+                                })}
                             </div>
-                        );
-                    })}
-                </div>
-                Click "Submit" once you're done setting all your desired parameters:
-                <SubmitQuery query={this.buildQuery()} />
-            </div>
+                            <div>
+                                <h2>Build Your Query</h2>
+                                {this.state.params.map((param, index) => {
+                                    return (
+                                        <div>
+                                            <button key={index} name={param.name}>
+                                                <span onClick={() => this.state.edit !== param ? this.edit(param, index) : this.edit("", "")}>{param.name}</span>
+                                                <span onClick={() => this.removeBtn(index)}>X</span>
+                                            </button>
+                                            {this.state.edit === param ? this.renderSwitch(param.type) : console.log("No param selected.")}
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                            <h2>Click "Submit" once you're done setting all your desired parameters!</h2>
+                            <SubmitQuery query={this.buildQuery()} />
+                        </Fragment>
+                    );
+                }}
+            </Consumer>
         );
     }
 }
