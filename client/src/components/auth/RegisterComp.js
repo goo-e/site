@@ -1,7 +1,12 @@
 import React, { Fragment, useState } from "react";
 import { Consumer } from "../../context";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import userFunctions from "../../utils/API";
+import Cookies from "universal-cookie";
+import setAuthToken from "../../utils/setAuthToken";
+import axios from "axios";
+
+const cookies = new Cookies();
 const { addUser } = userFunctions;
 
 const RegisterComp = () => {
@@ -9,7 +14,8 @@ const RegisterComp = () => {
     name: "",
     email: "",
     password: "",
-    password2: ""
+    password2: "",
+    redirect: false
   });
   const { name, email, password, password2 } = formData;
   const onChange = event =>
@@ -17,8 +23,18 @@ const RegisterComp = () => {
       ...formData,
       [event.target.name]: event.target.value
     });
-
-  const onSubmit = async (event, dispatch) => {
+  const setRedirect = () => {
+    setFormData({
+      ...formData,
+      redirect: true
+    });
+  };
+  const renderRedirect = () => {
+    if (formData.redirect) {
+      return <Redirect to="/prefs" />;
+    }
+  };
+  const onSubmit = async (event, dispatch, user) => {
     event.preventDefault();
     if (password !== password2) {
       console.log("Passwords do not match");
@@ -36,22 +52,35 @@ const RegisterComp = () => {
           }
         };
         const body = JSON.stringify(newUser);
-        await addUser(body, config);
+        const res = await addUser(body, config);
+        const token = res.data.token;
+        const cookies = new Cookies();
+        cookies.set("token", token);
+        console.log("check user token:", token);
+        if (token) {
+          setAuthToken(token);
+          const res = await axios.get("/api/auth");
+          dispatch({
+            type: "USER_LOADED",
+            payload: res.data
+          });
+          setRedirect();
+        }
       } catch (err) {
         console.error(err.response.data);
       }
-      dispatch({ type: "STORE_USER", payload: newUser });
     }
   };
   return (
     <Consumer>
       {value => {
-        const { dispatch } = value;
+        const { dispatch, user } = value;
         return (
           <Fragment>
+            {renderRedirect()}
             <h1>Sign Up</h1>
             <p>Create Your Account</p>
-            <form onSubmit={event => onSubmit(event, dispatch)}>
+            <form onSubmit={event => onSubmit(event, dispatch, user)}>
               <div>
                 <input
                   type="text"
