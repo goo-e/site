@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { SavePrefs } from "../components";
 import { Consumer } from "../context";
 import axios from "axios";
+
 const paramsArr = require("../paramsArr");
 
 // An array containing only those parameters that are set to be displayed by default in the user's prefs.
@@ -49,12 +50,40 @@ class Prefs extends Component {
 
   addBtn(param) {
     const updatedParams = this.state.params;
-    const newParam = {
-      name: param.name,
-      type: param.type,
-      value: "",
-      querySegment: param.querySegment
-    };
+    console.log(param.value);
+    console.log(param.type);
+    let value;
+    switch (param.type) {
+      case "FormInput":
+        value = "";
+        break;
+      case "Range":
+        value = ["", ""];
+        break;
+      case "RangeWithUnits":
+        value = ["", "", ""];
+        break;
+      case "Select":
+        value = "";
+        break;
+      default:
+        return;
+    }
+    const newParam =
+      param.type === "Select"
+        ? {
+            name: param.name,
+            type: param.type,
+            options: param.options,
+            value: value,
+            querySegment: param.querySegment
+          }
+        : {
+            name: param.name,
+            type: param.type,
+            value: value,
+            querySegment: param.querySegment
+          };
     updatedParams.push(newParam);
     this.setState({
       params: updatedParams
@@ -70,6 +99,9 @@ class Prefs extends Component {
   }
 
   async savePrefs(id, params, dispatch) {
+    params.map(param => {
+      param.querySegment = `${param.querySegment}`;
+    });
     const user = { id, params };
     const config = {
       headers: {
