@@ -1,0 +1,160 @@
+/* ========= importing fonts from assets file and formatting for browser ========= */
+@font-face {
+	font-family: 'Poppins';
+	src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+	src: url('../assets/fonts/Poppins-Regular.otf') format('opentype');
+	font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('../assets/fonts/Poppins-Medium.ttf') format('truetype');
+	src: url('../assets/fonts/Poppins-Medium.otf') format('opentype');
+	font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+	font-family: 'Poppins';
+	src: url('../assets/fonts/Poppins-SemiBold.ttf') format('truetype');
+	src: url('../assets/fonts/Poppins-SemiBold.otf') format('opentype');
+	font-weight: 600;
+  font-style: normal;
+}
+
+/* ========== =sets up backup fonts if montserrat fails ============*/
+
+body {
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  color: #FFFFFF;
+  width: 100vw;
+}
+
+/* ***************************    COMPONENTS, GENERAL STYLES AND FONTS    ***************************** */
+
+.app {
+  background: #71C46F;
+}
+
+.logo-lockup-medium{
+  width: 218px;
+  height: 75px;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.header {
+  position: absolute;
+  width: 126px;
+  height: 27px;
+  left: 34px;
+  top: 113px;
+}
+
+
+
+button {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 12px;
+  color: #FFFFFF;
+  text-align: center;
+
+  position: relative;
+  line-height: 19px;
+  padding: 4px 15px;
+  width: auto;
+  margin: 10px 10px;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.25), 0px 3px 4px rgba(0, 0, 0, 0.25);
+
+  background: #457E44;
+}
+
+.single-input-field {
+  position: absolute;
+  width: 251px;
+  height: 59px;
+
+  background: #FFFFFF;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.single-input-field-header {
+  position: relative;
+  width: 251px;
+  height: 25px;
+  top: 0%;
+  
+  background: #457E44;
+}
+
+.single-input-field-header-label {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 15px;
+  
+  color: #FFFFFF;
+}
+
+.single-input-field-header-info {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 12px; 
+  text-align: right;
+  
+  color: #FFFFFF;
+}
+
+
+/* ***************************                SITE                 ***************************** */
+/* ***************************    POSITIONING AND CUSTOM STYLES    ***************************** */
+
+body {
+  background-color: #71C46F;
+}
+
+/* ***************************              EXTENSION              ***************************** */
+/* ***************************    POSITIONING AND CUSTOM STYLES    ***************************** */
+
+#logo-lockup-top-extension {
+  position: absolute;
+  left: 33px;
+  top: 27px;
+}
+
+#header-user-filter-extension {
+  position: absolute;
+  left: 34px;
+  top: 113px;
+}
+
+#button-user-filter-extension {
+  position: absolute;
+  left: 35px;
+  top: 151px;
+}
+
+#input-field-extension {
+  position: absolute;
+  left: 35px;
+  top: 188px;
+}
+
+#header-filter-list-extension {
+  position: absolute;
+  left: 35px;
+  top: 266px;
+}
+
+#button-filter-list-extension {
+  position: absolute;
+  left: 35px;
+  top: 299px;
+}

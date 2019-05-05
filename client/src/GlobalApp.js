@@ -9,6 +9,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Logo, LoginBtn, RegisterBtn } from "./components";
 import { Consumer } from "./context";
 
+import "./styles/global-app.css";
+
+
 class GlobalApp extends Component {
   state = {
     isLoggedIn: false,
@@ -25,21 +28,23 @@ class GlobalApp extends Component {
           }
           return (
             <Router>
-              <div className="App">
-                <nav>
-                  <Logo />
-                  <LoginBtn />
-                  <RegisterBtn />
-                </nav>
-                <div className="App-header">
-                  <Switch>
-                    <Route exact path="/" component={About} />
-                    <Route path="/build" component={Build} />
-                    <Route path="/edit" component={EditAccount} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/prefs" component={Prefs} />
-                    <Route path="/register" component={Register} />
-                  </Switch>
+              <div className='container-all'>
+                <div className="App">
+                  <nav>
+                    <Logo />
+                    <LoginBtn />
+                    <RegisterBtn />
+                  </nav>
+                  <div className="App-header">
+                    <Switch>
+                      <Route exact path="/" component={About} />
+                      <Route path="/build" component={Build} />
+                      <Route path="/edit" component={EditAccount} />
+                      <Route path="/login" component={Login} />
+                      <Route path="/prefs" component={Prefs} />
+                      <Route path="/register" component={Register} />
+                    </Switch>
+                  </div>
                 </div>
               </div>
             </Router>
