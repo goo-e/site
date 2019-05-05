@@ -1,6 +1,7 @@
 const userRouter = require("express").Router();
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator/check");
+const auth = require("../../middleware/auth");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
 const config = require("config");
@@ -76,14 +77,14 @@ userRouter.post(
   }
 );
 
-userRouter.put("/", (req, res) => {
+userRouter.put("/", auth, (req, res) => {
   const { id, params } = req.body;
 
   User.findByIdAndUpdate(id, { prefs: params }, { new: true }, (err, user) => {
     // Handle any possible database errors
     if (err) return res.status(500).send(err);
     return res.send(user);
-  });
+  }).select("-password");
 });
 
 module.exports = userRouter;
