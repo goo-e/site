@@ -63,7 +63,7 @@ userRouter.post(
       jwt.sign(
         payload,
         config.get("jwtSecret"),
-        { expiresIn: 3600 },
+        { expiresIn: 360000000 },
         (err, token) => {
           if (err) throw err;
           res.json({ token });
@@ -75,5 +75,15 @@ userRouter.post(
     }
   }
 );
+
+userRouter.put("/", (req, res) => {
+  const { id, params } = req.body;
+
+  User.findByIdAndUpdate(id, { prefs: params }, { new: true }, (err, user) => {
+    // Handle any possible database errors
+    if (err) return res.status(500).send(err);
+    return res.send(user);
+  });
+});
 
 module.exports = userRouter;
