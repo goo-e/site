@@ -51,7 +51,18 @@ export class Provider extends Component {
       }
     },
     getPrefs: () => {
+      const compileFunction = str => {
+        const braceStart = str.indexOf("{");
+        const braceEnd = str.lastIndexOf("}");
+        const string = str.substring(braceStart + 1, braceEnd);
+        return Function("value", string);
+      }
       const userPrefs = this.state.user.prefs;
+      userPrefs.map(param => {
+        if (`${param.querySegment}`[0]) {
+          param.querySegment = compileFunction(`${param.querySegment}`);
+        }
+      });
       return userPrefs;
     }
   };
