@@ -8,35 +8,12 @@ import Register from "./pages/Register";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Logo, LoginBtn, RegisterBtn } from "./components";
 import { Consumer } from "./context";
-// import Cookies from "universal-cookie";
-// import setAuthToken from "./utils/setAuthToken";
-// import axios from "axios";
 
 class GlobalApp extends Component {
   state = {
     isLoggedIn: false,
     res: ""
   };
-
-  // async onPageLoad(dispatch) {
-  //   console.log("on load");
-  //   const cookies = new Cookies();
-  //   const token = cookies.get("token", [
-  //     {
-  //       doNotParse: true
-  //     }
-  //   ]);
-  //   if (token) {
-  //     setAuthToken(token);
-  //     const res = await axios.get("/api/auth");
-  //     console.log("res:", res);
-  //     dispatch({
-  //       type: "USER_LOADED",
-  //       payload: res.data
-  //     });
-  //     console.log("dispatch updated");
-  //   }
-  // }
 
   render() {
     return (
