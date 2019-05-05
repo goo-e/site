@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { FormInput, SelectInput, SubmitQuery } from "../components";
+import { FormInput, SavePrefs, SelectInput, SubmitQuery } from "../components";
 import { Consumer } from "../context";
+import axios from "axios";
 import userFunctions from "../utils/API";
 
 const paramsArr = require("../paramsArr");
@@ -222,6 +223,74 @@ class Build extends Component {
     console.log(this.state);
   };
 
+  renderSavePrefs(isAuthenticated, id, dispatch) {
+    if (isAuthenticated) {
+      let paramsToSave = this.state.params;
+      paramsToSave = paramsToSave.map(param => {
+        let value;
+        switch (param.type) {
+          case "FormInput":
+            value = "";
+            break;
+          case "Range":
+            value = ["", ""];
+            break;
+          case "RangeWithUnits":
+            value = ["", "", ""];
+            break;
+          case "Select":
+            value = "";
+            break;
+          default:
+            return;
+        }
+        const blankValueParam =
+          param.type === "Select"
+            ? {
+                name: param.name,
+                type: param.type,
+                options: param.options,
+                value: value,
+                querySegment: param.querySegment
+              }
+            : {
+                name: param.name,
+                type: param.type,
+                value: value,
+                querySegment: param.querySegment
+              };
+        return blankValueParam;
+      });
+      return (
+        <div>
+          <h2>
+            (Optional:) Click "Save Changes" to save the buttons you're currently using as your default search params!
+          </h2>
+          <SavePrefs
+            onClick={() => this.savePrefs(id, paramsToSave, dispatch)}
+          />
+        </div>
+      );
+    }
+  }
+
+  async savePrefs(id, params, dispatch) {
+    params.map(param => {
+      param.querySegment = `${param.querySegment}`;
+    });
+    const user = { id, params };
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    const res = await axios.put("/api/user", user, config);
+    dispatch({
+      type: "USER_LOADED",
+      payload: res.data
+    });
+  }
+
   buildQuery() {
     const queryURL =
       "http://www.google.com/search?q=" +
@@ -234,8 +303,10 @@ class Build extends Component {
     return (
       <Consumer>
         {value => {
-          const { dispatch, isAuthenticated, getPrefs } = value;
+          const { dispatch, isAuthenticated, getPrefs, user } = value;
+          const id = user._id;
           const userPrefs = getPrefs();
+          console.log(isAuthenticated);
           if (isAuthenticated && !this.state.loadedPrefs) {
             this.setState({
               params: userPrefs,
@@ -282,9 +353,9 @@ class Build extends Component {
                   );
                 })}
               </div>
+              {this.renderSavePrefs(isAuthenticated, id, dispatch)}
               <h2>
-                Click "Submit" once you're done setting all your desired
-                parameters!
+                Click "Submit" once you're done setting all your desired parameters!
               </h2>
               <SubmitQuery query={this.buildQuery()} />
             </Fragment>

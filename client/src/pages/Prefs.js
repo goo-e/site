@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { SavePrefs } from "../components";
 import { Consumer } from "../context";
 import axios from "axios";
@@ -129,7 +129,7 @@ class Prefs extends Component {
             });
           }
           return (
-            <div>
+            <Fragment>
               <div>
                 <h2>Choose Your Parameters</h2>
                 {paramsArr.map((param, index) => {
@@ -158,7 +158,7 @@ class Prefs extends Component {
               <SavePrefs
                 onClick={() => this.savePrefs(id, this.state.params, dispatch)}
               />
-            </div>
+            </Fragment>
           );
         }}
       </Consumer>
