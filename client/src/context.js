@@ -1,25 +1,14 @@
 import React, { Component } from "react";
-import Cookies from "universal-cookie";
-
 const Context = React.createContext();
-const cookies = new Cookies();
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "STORE_USER":
-      const token = cookies.get("token", [
-        {
-          doNotParse: true
-        }
-      ]);
+    case "USER_LOADED":
       return {
         ...state,
-
-        user: {
-          name: action.payload.name,
-          email: action.payload.email,
-          token: token
-        }
+        isAuthenticated: true,
+        loading: false,
+        user: action.payload
       };
     default:
       return state;
@@ -31,7 +20,9 @@ export class Provider extends Component {
     user: {
       userName: "",
       userEmail: "",
-      token: ""
+      token: "",
+      isAuthenticated: false,
+      loading: false
     },
     dispatch: action => {
       this.setState(state => reducer(state, action));
