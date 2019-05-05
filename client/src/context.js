@@ -11,7 +11,6 @@ const reducer = (state, action) => {
       const returnThis = {
         ...state,
         isAuthenticated: true,
-        loading: false,
         user: action.payload
       };
       return returnThis;
@@ -23,7 +22,6 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     isAuthenticated: false,
-    loading: false,
     user: {
       userName: "",
       userEmail: "",
@@ -56,7 +54,7 @@ export class Provider extends Component {
         const braceEnd = str.lastIndexOf("}");
         const string = str.substring(braceStart + 1, braceEnd);
         return Function("value", string);
-      }
+      };
       const userPrefs = this.state.user.prefs;
       userPrefs.map(param => {
         if (`${param.querySegment}`[0]) {
