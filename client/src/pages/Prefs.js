@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { SavePrefs } from "../components";
@@ -130,7 +131,7 @@ class Prefs extends Component {
             });
           }
           return (
-            <div>
+            <Fragment>
               <div>
                 <h2>Choose Your Parameters</h2>
                 {paramsArr.map((param, index) => {
@@ -159,7 +160,7 @@ class Prefs extends Component {
               <SavePrefs
                 onClick={() => this.savePrefs(id, this.state.params, dispatch)}
               />
-            </div>
+            </Fragment>
           );
         }}
       </Consumer>
