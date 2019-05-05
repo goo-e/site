@@ -53,7 +53,6 @@ const LoginComp = () => {
       const token = res.data.token;
       const cookies = new Cookies();
       cookies.set("token", token);
-      console.log("check user token:", token);
       if (token) {
         setAuthToken(token);
         const res = await axios.get("/api/auth");
