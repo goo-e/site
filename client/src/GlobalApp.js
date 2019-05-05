@@ -8,9 +8,9 @@ import Register from "./pages/Register";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Logo, LoginBtn, RegisterBtn } from "./components";
 import { Consumer } from "./context";
-import Cookies from "universal-cookie";
-import setAuthToken from "./utils/setAuthToken";
-import axios from "axios";
+// import Cookies from "universal-cookie";
+// import setAuthToken from "./utils/setAuthToken";
+// import axios from "axios";
 
 class GlobalApp extends Component {
   state = {
@@ -35,19 +35,17 @@ class GlobalApp extends Component {
   //       payload: res.data
   //     });
   //     console.log("dispatch updated");
-  //     return true;
   //   }
-  //   return false;
   // }
 
   render() {
     return (
       <Consumer>
         {value => {
-          const { dispatch } = value;
-          // {
-          //   this.onPageLoad(dispatch);
-          // }
+          const { pageLoad, isAuthenticated } = value;
+          if (!isAuthenticated) {
+            pageLoad();
+          }
           return (
             <Router>
               <div className="App">
