@@ -50,9 +50,7 @@ class GlobalApp extends Component {
                       <Route path="/build" component={Build} />
                       <Route path="/about" component={About} />
                       <Route path="/edit" component={EditAccount} />
-                      <Route path="/login" component={Login} />
                       <Route path="/prefs" component={Prefs} />
-                      <Route path="/register" component={Register} />
                     </Switch>
                   </div>
                 </div>
