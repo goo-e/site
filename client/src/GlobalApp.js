@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Prefs from "./pages/Prefs";
 import Register from "./pages/Register";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Logo, LoginBtn, RegisterBtn } from "./components";
+import { Logo, LoginBtn, LogoutBtn, RegisterBtn } from "./components";
 import { Consumer } from "./context";
 
 class GlobalApp extends Component {
@@ -42,7 +42,7 @@ class GlobalApp extends Component {
                 <div className="App">
                   <nav>
                     <Logo />
-                    <p>Logout</p>
+                    <LogoutBtn />
                   </nav>
                   <div className="App-header">
                     <Switch>
