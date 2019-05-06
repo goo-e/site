@@ -56,7 +56,6 @@ const LoginComp = () => {
     <Consumer>
       {value => {
         const { dispatch } = value;
-
         return (
           <Fragment>
             <h1>Sign In</h1>
