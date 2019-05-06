@@ -1193,6 +1193,164 @@ const paramsArr = [
         ],
         value: "",
         querySegment: value => {return value ? `&cr=country${value}` : ""}
+    },
+    {
+        name: "Max Time Since Last Update",
+        type: "Select",
+        options: [
+            {
+                name: "Any Time",
+                value: "all"
+            },
+            {
+                name: "Past 24 Hours",
+                value: "d"
+            },
+            {
+                name: "Past Week",
+                value: "w"
+            },
+            {
+                name: "Past Month",
+                value: "m"
+            },
+            {
+                name: "Past Year",
+                value: "y"
+            }
+        ],
+        value: "",
+        querySegment: value => {return value ? `&as_qdr=${value}` : ""}
+    },
+    {
+        name: "Specific Site/Domain",
+        type: "FormInput",
+        value: "",
+        querySegment: value => {return value ? `&as_sitesearch=${value}` : ""}
+    },
+    {
+        name: "Location of Terms",
+        type: "Select",
+        options: [
+            {
+                name: "Anywhere in the Page",
+                value: "any"
+            },
+            {
+                name: "In the Title of the Page",
+                value: "title"
+            },
+            {
+                name: "In the Text of the Page",
+                value: "body"
+            },
+            {
+                name: "In the URL of the Page",
+                value: "url"
+            },
+            {
+                name: "In Links to the Page",
+                value: "links"
+            }
+        ],
+        value: "",
+        querySegment: value => {return value ? `&as_occt=${value}` : ""}
+    },
+    {
+        name: "SafeSearch Option",
+        type: "Select",
+        options: [
+            {
+                name: "Show Most Relevant Results",
+                value: "images"
+            },
+            {
+                name: "Filter Explicit Results",
+                value: "active"
+            }
+        ],
+        value: "",
+        querySegment: value => {return value ? `&safe=${value}` : ""}
+    },
+    {
+        name: "File Type",
+        type: "Select",
+        options: [
+            {
+                name: "Any Format",
+                value: "any"
+            },
+            {
+                name: "Adobe Acrobat PDF (.pdf)",
+                value: "pdf"
+            },
+            {
+                name: "Adobe PostScript (.ps)",
+                value: "ps"
+            },
+            {
+                name: "Autodesk DWF (.dwf)",
+                value: "dwf"
+            },
+            {
+                name: "Google Earth KML (.kml)",
+                value: "kml"
+            },
+            {
+                name: "Google Earth KMZ (.kmz)",
+                value: "kmz"
+            },
+            {
+                name: "Microsoft Excel (.xls)",
+                value: "xls"
+            },
+            {
+                name: "Microsoft PowerPoint (.ppt)",
+                value: "ppt"
+            },
+            {
+                name: "Microsoft Word (.doc)",
+                value: "doc"
+            },
+            {
+                name: "Rich Text Format (.rtf)",
+                value: "rtf"
+            },
+            {
+                name: "Shockwave Flash (.swf)",
+                value: "swf"
+            }
+        ],
+        value: "",
+        querySegment: value => {return value ? `&as_filetype=${value}` : ""}
+    },
+    {
+        name: "Usage Rights Filter",
+        type: "Select",
+        options: [
+            {
+                name: "No Filter",
+                value: ""
+            },
+            {
+                name: "Free to Use or Share",
+                value: "%28cc_publicdomain%7Ccc_attribute%7Ccc_sharealike%7Ccc_noncommercial%7Ccc_nonderived%29"
+            },
+            {
+                name: "Free to Use or Share, Even Commercially",
+                value: "%28cc_publicdomain%7Ccc_attribute%7Ccc_sharealike%7Ccc_nonderived%29.-%28cc_noncommercial%29"
+            },
+            {
+                name: "Free to Use, Share, or Modify",
+                value: "%28cc_publicdomain%7Ccc_attribute%7Ccc_sharealike%7Ccc_noncommercial%29.-%28cc_nonderived%29"
+            },
+            {
+                name: "Free to Use, Share, or Modify, Even Commercially",
+                value: "%28cc_publicdomain%7Ccc_attribute%7Ccc_sharealike%29.-%28cc_noncommercial%7Ccc_nonderived%29"
+            }
+        ],
+        value: "",
+        querySegment: value => {return value ? `&as_rights=${value}` : ""}
     }
 ];
 
