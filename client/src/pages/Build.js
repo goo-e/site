@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { FormInput, SavePrefs, SelectInput, SubmitQuery } from "../components";
 import { Consumer } from "../context";
 import axios from "axios";
-import userFunctions from "../utils/API";
 
 const paramsArr = require("../paramsArr");
 
@@ -56,8 +55,6 @@ class Build extends Component {
 
   addBtn(param) {
     const updatedParams = this.state.params;
-    console.log(param.value);
-    console.log(param.type);
     let value;
     switch (param.type) {
       case "FormInput":
@@ -179,7 +176,6 @@ class Build extends Component {
           </div>
         );
       case "Select":
-        console.log(this.state.edit);
         return (
           <SelectInput
             name={this.state.edit.name}
@@ -201,7 +197,6 @@ class Build extends Component {
     this.setState({
       params: updatedParams
     });
-    console.log(this.state);
   };
 
   handleRangeChange = (event, index) => {
@@ -211,7 +206,6 @@ class Build extends Component {
     this.setState({
       params: updatedParams
     });
-    console.log(this.state);
   };
 
   handleOptionChange = value => {
@@ -220,7 +214,6 @@ class Build extends Component {
     this.setState({
       params: updatedParams
     });
-    console.log(this.state);
   };
 
   renderSavePrefs(isAuthenticated, id, dispatch) {
@@ -242,7 +235,7 @@ class Build extends Component {
             value = "";
             break;
           default:
-            return;
+            return console.log("No valid param type detected.");
         }
         const blankValueParam =
           param.type === "Select"
@@ -276,7 +269,7 @@ class Build extends Component {
 
   async savePrefs(id, params, dispatch) {
     params.map(param => {
-      param.querySegment = `${param.querySegment}`;
+      return param.querySegment = `${param.querySegment}`;
     });
     const user = { id, params };
     const config = {
@@ -306,7 +299,6 @@ class Build extends Component {
           const { dispatch, isAuthenticated, getPrefs, user } = value;
           const id = user._id;
           const userPrefs = getPrefs();
-          console.log(isAuthenticated);
           if (isAuthenticated && !this.state.loadedPrefs) {
             this.setState({
               params: userPrefs,
@@ -348,16 +340,16 @@ class Build extends Component {
                       </button>
                       {this.state.edit === param
                         ? this.renderSwitch(param.type)
-                        : console.log("No param selected.")}
+                        : console.log(`${param.name} not selected.`)}
                     </div>
                   );
                 })}
               </div>
               {this.renderSavePrefs(isAuthenticated, id, dispatch)}
               <h2>
-                Click "Submit" once you're done setting all your desired parameters!
+                Click "Search" once you're done setting all your desired parameters!
               </h2>
-              <SubmitQuery query={this.buildQuery()} />
+              <SubmitQuery queryURL={this.buildQuery()} />
             </Fragment>
           );
         }}
