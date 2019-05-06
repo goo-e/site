@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from "react";
 import { Consumer } from "../../context";
-// import { Link } from "react-router-dom";
 import userFunctions from "../../utils/API";
 import Cookies from "universal-cookie";
 import setAuthToken from "../../utils/setAuthToken";
@@ -58,8 +57,8 @@ const LoginComp = () => {
         const { dispatch } = value;
         return (
           <Fragment>
-            <h1>Sign In</h1>
-            <p>Sign into your account</p>
+            <h1>sign in</h1>
+            <p>sign into your account</p>
             <form onSubmit={event => onSubmit(event, dispatch)}>
               <div>
                 <input
@@ -82,11 +81,8 @@ const LoginComp = () => {
                   required
                 />
               </div>
-              <input type="submit" value="Login" />
+              <input type="submit" value="sign in" />
             </form>
-            {/* <p>
-              Don't have an account? <Link to="/register">Sign up</Link>
-            </p> */}
           </Fragment>
         );
       }}

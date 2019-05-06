@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import About from "./pages/About";
-import Build from "./pages/Build";
-import EditAccount from "./pages/EditAccount";
-// import Login from "./pages/Login";
+// import Build from "./pages/Build";
+// import EditAccount from "./pages/EditAccount";
 import Prefs from "./pages/Prefs";
-// import Register from "./pages/Register";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Logo, LoginBtn, LogoutBtn, RegisterBtn } from "./components";
+import { Logo, LogoutBtn } from "./components";
 import { Consumer } from "./context";
 
 import "./styles/global-app.css";
-
 
 class GlobalApp extends Component {
   render() {
@@ -23,26 +20,15 @@ class GlobalApp extends Component {
             pageLoad();
             return (
               <Router>
-                <div className='container-all'>
+                <div className="container-all">
                   <div className="App">
-                    {/* <nav className='nav-container'>
-                      <Logo />
-                      <Link to="/build">
-                        <p>build</p>
-                      </Link>
-                      <Link to="/about">
-                        <p>about</p>
-                      </Link>
-                    </nav> */}
                     <div className="App-header">
                       <Switch>
-                        <Route exact path="/" component={About} />
-                        <Route exact path="/about" component={About} />
-                        <Route path="/build" component={Build} />
-                        <Route path="/login" component={About} />
-                        <Route path="/register" component={About} />
-                        <Redirect exact from="/prefs" to="/login" />
-                        <Redirect exact from="/edit" to="/login" />
+                        {/* <Route exact path="/about" component={About} /> */}
+                        {/* <Route path="/build" component={Build} /> */}
+                        <Redirect exact from="/prefs" to="/about" />
+                        {/* <Redirect exact from="/edit" to="/about" /> */}
+                        <Route path="/" component={About} />
                       </Switch>
                     </div>
                   </div>
@@ -59,22 +45,20 @@ class GlobalApp extends Component {
                     <Link to="/prefs">
                       <p>preferences</p>
                     </Link>
-                    <Link to="/build">
+                    {/* <Link to="/build">
                       <p>build</p>
-                    </Link>
+                    </Link> */}
                     <Link to="/about">
                       <p>about</p>
                     </Link>
                   </nav>
                   <div className="App-header">
                     <Switch>
-                      <Route exact path="/" component={Build} />
-                      <Route path="/build" component={Build} />
+                      {/* <Route path="/build" component={Build} /> */}
                       <Route path="/about" component={About} />
-                      <Route path="/edit" component={EditAccount} />
+                      {/* <Route path="/edit" component={EditAccount} /> */}
                       <Route path="/prefs" component={Prefs} />
-                      <Redirect exact from="/login" to="/build" />
-                      <Redirect exact from="/register" to="/prefs" />
+                      <Route path="/" component={Prefs} />
                     </Switch>
                   </div>
                 </div>
