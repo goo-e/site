@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import About from "./pages/About";
 import Build from "./pages/Build";
 import EditAccount from "./pages/EditAccount";
@@ -31,6 +32,8 @@ class GlobalApp extends Component {
                       <Route path="/build" component={Build} />
                       <Route path="/login" component={Login} />
                       <Route path="/register" component={Register} />
+                      <Redirect exact from="/prefs" to="/login" />
+                      <Redirect exact from="/edit" to="/login" />
                     </Switch>
                   </div>
                 </div>
@@ -51,6 +54,7 @@ class GlobalApp extends Component {
                       <Route path="/about" component={About} />
                       <Route path="/edit" component={EditAccount} />
                       <Route path="/prefs" component={Prefs} />
+                      <Redirect exact from="/login" to="/prefs" />
                     </Switch>
                   </div>
                 </div>

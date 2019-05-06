@@ -6,7 +6,6 @@ import Cookies from "universal-cookie";
 import setAuthToken from "../../utils/setAuthToken";
 import axios from "axios";
 
-const cookies = new Cookies();
 const { checkUser } = userFunctions;
 
 const LoginComp = () => {
@@ -31,10 +30,12 @@ const LoginComp = () => {
   const renderRedirect = () => {
     if (formData.redirect) {
       return <Redirect to="/prefs" />;
+      // console.log("got to history push");
+      // return this.props.history.push("/prefs");
     }
   };
 
-  const onSubmit = async (event, dispatch, user) => {
+  const onSubmit = async (event, dispatch) => {
     event.preventDefault();
     const User = {
       email,
@@ -66,17 +67,18 @@ const LoginComp = () => {
       console.error(err.response.data);
     }
   };
+
   return (
     <Consumer>
       {value => {
-        const { dispatch, user } = value;
+        const { dispatch } = value;
 
         return (
           <Fragment>
             {renderRedirect()}
             <h1>Sign In</h1>
             <p>Sign into your account</p>
-            <form onSubmit={event => onSubmit(event, dispatch, user)}>
+            <form onSubmit={event => onSubmit(event, dispatch)}>
               <div>
                 <input
                   type="email"
