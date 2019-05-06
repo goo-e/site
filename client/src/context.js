@@ -14,6 +14,12 @@ const reducer = (state, action) => {
         user: action.payload
       };
       return returnThis;
+    case "CLEAR_USER":
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: {}
+      };
     default:
       return state;
   }
