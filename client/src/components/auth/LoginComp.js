@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState } from "react";
 import { Consumer } from "../../context";
 import { Link, Redirect } from "react-router-dom";
 import userFunctions from "../../utils/API";
@@ -12,15 +12,8 @@ const LoginComp = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    redirect: false,
-    isMounted: false
+    redirect: false
   });
-  useEffect(() =>
-    setFormData({
-      ...formData,
-      isMounted: true
-    })
-  );
   const { email, password } = formData;
   const onChange = event =>
     setFormData({
@@ -36,13 +29,13 @@ const LoginComp = () => {
   };
   const renderRedirect = () => {
     if (formData.redirect) {
-      // return <Redirect to="/prefs" />;
-      console.log("got to history push");
-      return this.props.history.push("/prefs");
+      return <Redirect to="/prefs" />;
+      // console.log("got to history push");
+      // return this.props.history.push("/prefs");
     }
   };
 
-  const onSubmit = async (event, dispatch, user) => {
+  const onSubmit = async (event, dispatch) => {
     event.preventDefault();
     const User = {
       email,
@@ -75,19 +68,17 @@ const LoginComp = () => {
     }
   };
 
-  const isMounted = formData.isMounted;
-
   return (
     <Consumer>
       {value => {
-        const { dispatch, user } = value;
+        const { dispatch } = value;
 
         return (
           <Fragment>
             {renderRedirect()}
             <h1>Sign In</h1>
             <p>Sign into your account</p>
-            <form onSubmit={event => onSubmit(event, dispatch, user)}>
+            <form onSubmit={event => onSubmit(event, dispatch)}>
               <div>
                 <input
                   type="email"
