@@ -21,7 +21,6 @@ const LoginComp = () => {
     });
 
   const onSubmit = async (event, dispatch) => {
-    console.log("submitted");
     event.preventDefault();
     const User = {
       email,
