@@ -50,8 +50,6 @@ class Prefs extends Component {
 
   addBtn(param) {
     const updatedParams = this.state.params;
-    console.log(param.value);
-    console.log(param.type);
     let value;
     switch (param.type) {
       case "FormInput":
@@ -100,7 +98,7 @@ class Prefs extends Component {
 
   async savePrefs(id, params, dispatch) {
     params.map(param => {
-      param.querySegment = `${param.querySegment}`;
+      return param.querySegment = `${param.querySegment}`;
     });
     const user = { id, params };
     const config = {
