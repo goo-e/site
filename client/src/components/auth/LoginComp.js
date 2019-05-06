@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Consumer } from "../../context";
 import { Link, Redirect } from "react-router-dom";
 import userFunctions from "../../utils/API";
@@ -6,15 +6,21 @@ import Cookies from "universal-cookie";
 import setAuthToken from "../../utils/setAuthToken";
 import axios from "axios";
 
-const cookies = new Cookies();
 const { checkUser } = userFunctions;
 
 const LoginComp = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    redirect: false
+    redirect: false,
+    isMounted: false
   });
+  useEffect(() =>
+    setFormData({
+      ...formData,
+      isMounted: true
+    })
+  );
   const { email, password } = formData;
   const onChange = event =>
     setFormData({
@@ -30,7 +36,9 @@ const LoginComp = () => {
   };
   const renderRedirect = () => {
     if (formData.redirect) {
-      return <Redirect to="/prefs" />;
+      // return <Redirect to="/prefs" />;
+      console.log("got to history push");
+      return this.props.history.push("/prefs");
     }
   };
 
@@ -66,6 +74,9 @@ const LoginComp = () => {
       console.error(err.response.data);
     }
   };
+
+  const isMounted = formData.isMounted;
+
   return (
     <Consumer>
       {value => {
