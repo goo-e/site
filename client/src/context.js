@@ -11,10 +11,15 @@ const reducer = (state, action) => {
       const returnThis = {
         ...state,
         isAuthenticated: true,
-        loading: false,
         user: action.payload
       };
       return returnThis;
+    case "CLEAR_USER":
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: {}
+      };
     default:
       return state;
   }
@@ -23,7 +28,6 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   state = {
     isAuthenticated: false,
-    loading: false,
     user: {
       userName: "",
       userEmail: "",
@@ -51,7 +55,19 @@ export class Provider extends Component {
       }
     },
     getPrefs: () => {
+      const compileFunction = str => {
+        const braceStart = str.indexOf("{");
+        const braceEnd = str.lastIndexOf("}");
+        const string = str.substring(braceStart + 1, braceEnd);
+        return Function("value", string);
+      };
       const userPrefs = this.state.user.prefs;
+      userPrefs.map(param => {
+        if (`${param.querySegment}`[0]) {
+          return param.querySegment = compileFunction(`${param.querySegment}`);
+        }
+        return param;
+      });
       return userPrefs;
     }
   };

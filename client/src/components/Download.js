@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import API from "../utils/API";
 
 import "../styles/download.css"
 

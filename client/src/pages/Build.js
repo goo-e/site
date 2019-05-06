@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { FormInput, SelectInput, SubmitQuery } from "../components";
+import { FormInput, SavePrefs, SelectInput, SubmitQuery } from "../components";
 import { Consumer } from "../context";
-import userFunctions from "../utils/API";
+import axios from "axios";
 
 const paramsArr = require("../paramsArr");
 
@@ -55,8 +55,6 @@ class Build extends Component {
 
   addBtn(param) {
     const updatedParams = this.state.params;
-    console.log(param.value);
-    console.log(param.type);
     let value;
     switch (param.type) {
       case "FormInput":
@@ -178,7 +176,6 @@ class Build extends Component {
           </div>
         );
       case "Select":
-        console.log(this.state.edit);
         return (
           <SelectInput
             name={this.state.edit.name}
@@ -200,7 +197,6 @@ class Build extends Component {
     this.setState({
       params: updatedParams
     });
-    console.log(this.state);
   };
 
   handleRangeChange = (event, index) => {
@@ -210,7 +206,6 @@ class Build extends Component {
     this.setState({
       params: updatedParams
     });
-    console.log(this.state);
   };
 
   handleOptionChange = value => {
@@ -219,8 +214,75 @@ class Build extends Component {
     this.setState({
       params: updatedParams
     });
-    console.log(this.state);
   };
+
+  renderSavePrefs(isAuthenticated, id, dispatch) {
+    if (isAuthenticated) {
+      let paramsToSave = this.state.params;
+      paramsToSave = paramsToSave.map(param => {
+        let value;
+        switch (param.type) {
+          case "FormInput":
+            value = "";
+            break;
+          case "Range":
+            value = ["", ""];
+            break;
+          case "RangeWithUnits":
+            value = ["", "", ""];
+            break;
+          case "Select":
+            value = "";
+            break;
+          default:
+            return console.log("No valid param type detected.");
+        }
+        const blankValueParam =
+          param.type === "Select"
+            ? {
+                name: param.name,
+                type: param.type,
+                options: param.options,
+                value: value,
+                querySegment: param.querySegment
+              }
+            : {
+                name: param.name,
+                type: param.type,
+                value: value,
+                querySegment: param.querySegment
+              };
+        return blankValueParam;
+      });
+      return (
+        <div>
+          <h2>
+            (Optional:) Click "Save Changes" to save the buttons you're currently using as your default search params!
+          </h2>
+          <SavePrefs
+            onClick={() => this.savePrefs(id, paramsToSave, dispatch)}
+          />
+        </div>
+      );
+    }
+  }
+
+  async savePrefs(id, params, dispatch) {
+    params.map(param => {
+      return param.querySegment = `${param.querySegment}`;
+    });
+    const user = { id, params };
+    const config = {
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    const res = await axios.put("/api/user", user, config);
+    dispatch({
+      type: "USER_LOADED",
+      payload: res.data
+    });
+  }
 
   buildQuery() {
     const queryURL =
@@ -234,7 +296,8 @@ class Build extends Component {
     return (
       <Consumer>
         {value => {
-          const { dispatch, isAuthenticated, getPrefs } = value;
+          const { dispatch, isAuthenticated, getPrefs, user } = value;
+          const id = user._id;
           const userPrefs = getPrefs();
           if (isAuthenticated && !this.state.loadedPrefs) {
             this.setState({
@@ -264,7 +327,7 @@ class Build extends Component {
                       </button>
                       {this.state.edit === param
                         ? this.renderSwitch(param.type)
-                        : console.log("No param selected.")}
+                        : console.log(`${param.name} not selected.`)}
                     </div>
                   );
                 })}
@@ -284,11 +347,11 @@ class Build extends Component {
                   );
                 })}
               </div>
-              <p>
-                Click "Submit" once you're done setting all your desired
-                parameters!
-              </p>
-              <SubmitQuery query={this.buildQuery()} />
+              {this.renderSavePrefs(isAuthenticated, id, dispatch)}
+              <h2>
+                Click "Search" once you're done setting all your desired parameters!
+              </h2>
+              <SubmitQuery queryURL={this.buildQuery()} />
             </Fragment>
           );
         }}

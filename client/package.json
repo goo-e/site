@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "goophur",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,6 +8,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
+    "typescript": "^3.4.5",
     "universal-cookie": "^3.1.0"
   },
   "scripts": {
