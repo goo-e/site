@@ -37,6 +37,7 @@ body {
   background: #71C46F;
 }
 
+
 .logo-lockup-medium{
   width: 218px;
   height: 75px;
@@ -118,6 +119,19 @@ body {
   background-color: #71C46F;
 }
 
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav-text {
+  color: #FFFFFF;
+  font-size: 12px;
+  margin: 0 5px;
+}
+
 /* ***************************              EXTENSION              ***************************** */
 /* ***************************    POSITIONING AND CUSTOM STYLES    ***************************** */
 
@@ -127,7 +141,7 @@ body {
   top: 27px;
 } */
 
-.header-ext {
+.header-text {
   margin-top: 10%;
   margin-bottom: 3%;
 }

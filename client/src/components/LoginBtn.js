@@ -7,7 +7,7 @@ import '../styles/login-btn.css';
 class LoginBtn extends Component {
     render() {
         return (
-            <Link to="/login">
+            <Link className='nav-text' to="/login">
                 {/* <button>sign in</button> */}
                 sign in
             </Link>

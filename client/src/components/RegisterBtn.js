@@ -5,9 +5,9 @@ import API from "../utils/API";
 class RegisterBtn extends Component {
     render() {
         return (
-            <Link to="/register">
+            <Link className='nav-text' to="/register">
                 {/* <button>Register</button> */}
-                Register
+                register
             </Link>
         );
     }

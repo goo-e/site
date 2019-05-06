@@ -24,6 +24,7 @@
 
 .about-test-site-container {
   display: flex;
+  flex-wrap: wrap;
   margin-top: 6vh;
   margin-left: 20%;
 }

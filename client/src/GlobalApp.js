@@ -30,10 +30,10 @@ class GlobalApp extends Component {
             <Router>
               <div className='container-all'>
                 <div className="App">
-                  <nav>
-                    <Logo />
+                  <nav className='nav-container'>
                     <LoginBtn />
                     <RegisterBtn />
+                    <Logo />
                   </nav>
                   <div className="App-header">
                     <Switch>
