@@ -55,6 +55,7 @@ class GlobalApp extends Component {
                       <Route path="/edit" component={EditAccount} />
                       <Route path="/prefs" component={Prefs} />
                       <Redirect exact from="/login" to="/prefs" />
+                      <Redirect exact from="/register" to="/prefs" />
                     </Switch>
                   </div>
                 </div>
