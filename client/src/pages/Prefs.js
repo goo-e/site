@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import { Redirect } from "react-router-dom";
 import { SavePrefs } from "../components";
 import { Consumer } from "../context";
 import axios from "axios";
@@ -99,7 +98,7 @@ class Prefs extends Component {
 
   async savePrefs(id, params, dispatch) {
     params.map(param => {
-      return param.querySegment = `${param.querySegment}`;
+      return (param.querySegment = `${param.querySegment}`);
     });
     const user = { id, params };
     const config = {
