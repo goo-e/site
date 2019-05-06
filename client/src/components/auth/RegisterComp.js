@@ -111,9 +111,9 @@ const RegisterComp = () => {
               </div>
               <input type="submit" value="Register" />
             </form>
-            <p>
+            {/* <p>
               Already have an account? <Link to="/login">Sign In</Link>
-            </p>
+            </p> */}
           </Fragment>
         );
       }}

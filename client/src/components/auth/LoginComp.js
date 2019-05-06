@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Consumer } from "../../context";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import userFunctions from "../../utils/API";
 import Cookies from "universal-cookie";
 import setAuthToken from "../../utils/setAuthToken";
@@ -84,9 +84,9 @@ const LoginComp = () => {
               </div>
               <input type="submit" value="Login" />
             </form>
-            <p>
+            {/* <p>
               Don't have an account? <Link to="/register">Sign up</Link>
-            </p>
+            </p> */}
           </Fragment>
         );
       }}
