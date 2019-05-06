@@ -21,6 +21,7 @@ const LoginComp = () => {
     });
 
   const onSubmit = async (event, dispatch) => {
+    console.log("submitted");
     event.preventDefault();
     const User = {
       email,
@@ -56,7 +57,6 @@ const LoginComp = () => {
     <Consumer>
       {value => {
         const { dispatch } = value;
-
         return (
           <Fragment>
             <h1>Sign In</h1>

@@ -21,32 +21,32 @@ class GlobalApp extends Component {
           const { pageLoad, isAuthenticated } = value;
           if (!isAuthenticated) {
             pageLoad();
-          }
-          return (
-            <Router>
-              <div className='container-all'>
-                <div className="App">
-                  <nav className='nav-container'>
-                    <LoginBtn />
-                    <RegisterBtn />
-                    <Logo />
-                    <Link to="/build">
-                      <p>build</p>
-                    </Link>
-                    <Link to="/about">
-                      <p>about</p>
-                    </Link>
-                  </nav>
-                  <div className="App-header">
-                    <Switch>
-                      <Route exact path="/" component={About} />
-                      <Route exact path="/about" component={About} />
-                      <Route path="/build" component={Build} />
-                      <Route path="/login" component={Login} />
-                      <Route path="/register" component={Register} />
-                      <Redirect exact from="/prefs" to="/login" />
-                      <Redirect exact from="/edit" to="/login" />
-                    </Switch>
+            return (
+              <Router>
+                <div className='container-all'>
+                  <div className="App">
+                    <nav className='nav-container'>
+                      <LoginBtn />
+                      <RegisterBtn />
+                      <Logo />
+                      <Link to="/build">
+                        <p>build</p>
+                      </Link>
+                      <Link to="/about">
+                        <p>about</p>
+                      </Link>
+                    </nav>
+                    <div className="App-header">
+                      <Switch>
+                        <Route exact path="/" component={About} />
+                        <Route exact path="/about" component={About} />
+                        <Route path="/build" component={Build} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/register" component={Register} />
+                        <Redirect exact from="/prefs" to="/login" />
+                        <Redirect exact from="/edit" to="/login" />
+                      </Switch>
+                    </div>
                   </div>
                 </div>
               </Router>
