@@ -29,6 +29,7 @@ class GlobalApp extends Component {
                   <div className="App-header">
                     <Switch>
                       <Route exact path="/" component={About} />
+                      <Route exact path="/about" component={About} />
                       <Route path="/build" component={Build} />
                       <Route path="/login" component={Login} />
                       <Route path="/register" component={Register} />
