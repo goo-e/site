@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import { Consumer } from "../../context";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import userFunctions from "../../utils/API";
 import Cookies from "universal-cookie";
 import setAuthToken from "../../utils/setAuthToken";
@@ -11,8 +11,7 @@ const { checkUser } = userFunctions;
 const LoginComp = () => {
   const [formData, setFormData] = useState({
     email: "",
-    password: "",
-    redirect: false
+    password: ""
   });
   const { email, password } = formData;
   const onChange = event =>
@@ -20,20 +19,6 @@ const LoginComp = () => {
       ...formData,
       [event.target.name]: event.target.value
     });
-
-  const setRedirect = () => {
-    setFormData({
-      ...formData,
-      redirect: true
-    });
-  };
-  const renderRedirect = () => {
-    if (formData.redirect) {
-      return <Redirect to="/prefs" />;
-      // console.log("got to history push");
-      // return this.props.history.push("/prefs");
-    }
-  };
 
   const onSubmit = async (event, dispatch) => {
     event.preventDefault();
@@ -61,7 +46,6 @@ const LoginComp = () => {
           type: "USER_LOADED",
           payload: res.data
         });
-        setRedirect();
       }
     } catch (err) {
       console.error(err.response.data);
@@ -75,7 +59,6 @@ const LoginComp = () => {
 
         return (
           <Fragment>
-            {renderRedirect()}
             <h1>Sign In</h1>
             <p>Sign into your account</p>
             <form onSubmit={event => onSubmit(event, dispatch)}>

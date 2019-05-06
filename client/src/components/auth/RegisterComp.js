@@ -1,12 +1,11 @@
 import React, { Fragment, useState } from "react";
 import { Consumer } from "../../context";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import userFunctions from "../../utils/API";
 import Cookies from "universal-cookie";
 import setAuthToken from "../../utils/setAuthToken";
 import axios from "axios";
 
-const cookies = new Cookies();
 const { addUser } = userFunctions;
 
 const RegisterComp = () => {
@@ -14,8 +13,7 @@ const RegisterComp = () => {
     name: "",
     email: "",
     password: "",
-    password2: "",
-    redirect: false
+    password2: ""
   });
   const { name, email, password, password2 } = formData;
   const onChange = event =>
@@ -23,17 +21,7 @@ const RegisterComp = () => {
       ...formData,
       [event.target.name]: event.target.value
     });
-  const setRedirect = () => {
-    setFormData({
-      ...formData,
-      redirect: true
-    });
-  };
-  const renderRedirect = () => {
-    if (formData.redirect) {
-      return <Redirect to="/prefs" />;
-    }
-  };
+
   const onSubmit = async (event, dispatch, user) => {
     event.preventDefault();
     if (password !== password2) {
@@ -64,7 +52,6 @@ const RegisterComp = () => {
             type: "USER_LOADED",
             payload: res.data
           });
-          setRedirect();
         }
       } catch (err) {
         console.error(err.response.data);
@@ -77,7 +64,6 @@ const RegisterComp = () => {
         const { dispatch, user } = value;
         return (
           <Fragment>
-            {renderRedirect()}
             <h1>Sign Up</h1>
             <p>Create Your Account</p>
             <form onSubmit={event => onSubmit(event, dispatch, user)}>
