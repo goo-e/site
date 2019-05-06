@@ -60,8 +60,9 @@ export class Provider extends Component {
       const userPrefs = this.state.user.prefs;
       userPrefs.map(param => {
         if (`${param.querySegment}`[0]) {
-          param.querySegment = compileFunction(`${param.querySegment}`);
+          return param.querySegment = compileFunction(`${param.querySegment}`);
         }
+        return param;
       });
       return userPrefs;
     }
