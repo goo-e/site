@@ -3,9 +3,9 @@ import { Link, Redirect } from "react-router-dom";
 import About from "./pages/About";
 import Build from "./pages/Build";
 import EditAccount from "./pages/EditAccount";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 import Prefs from "./pages/Prefs";
-import Register from "./pages/Register";
+// import Register from "./pages/Register";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Logo, LoginBtn, LogoutBtn, RegisterBtn } from "./components";
 import { Consumer } from "./context";
@@ -25,9 +25,7 @@ class GlobalApp extends Component {
               <Router>
                 <div className='container-all'>
                   <div className="App">
-                    <nav className='nav-container'>
-                      <LoginBtn />
-                      <RegisterBtn />
+                    {/* <nav className='nav-container'>
                       <Logo />
                       <Link to="/build">
                         <p>build</p>
@@ -35,14 +33,14 @@ class GlobalApp extends Component {
                       <Link to="/about">
                         <p>about</p>
                       </Link>
-                    </nav>
+                    </nav> */}
                     <div className="App-header">
                       <Switch>
                         <Route exact path="/" component={About} />
                         <Route exact path="/about" component={About} />
                         <Route path="/build" component={Build} />
-                        <Route path="/login" component={Login} />
-                        <Route path="/register" component={Register} />
+                        <Route path="/login" component={About} />
+                        <Route path="/register" component={About} />
                         <Redirect exact from="/prefs" to="/login" />
                         <Redirect exact from="/edit" to="/login" />
                       </Switch>
