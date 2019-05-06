@@ -244,11 +244,37 @@ class Build extends Component {
           }
           return (
             <Fragment>
+              <div className='user-filters-container'>
+                <header className='header header-ext'>your filters</header>
+                {this.state.params.map((param, index) => {
+                  return (
+                    <div>
+                      <button className='btn-user-filter' key={index} name={param.name}>
+                        <span
+                          className='user-filter-label'
+                          onClick={() =>
+                            this.state.edit !== param
+                              ? this.edit(param, index)
+                              : this.edit("", "")
+                          }
+                        >
+                          {param.name}
+                        </span>
+                        <span id='x-spaces' onClick={() => this.removeBtn(index)}>X</span>
+                      </button>
+                      {this.state.edit === param
+                        ? this.renderSwitch(param.type)
+                        : console.log("No param selected.")}
+                    </div>
+                  );
+                })}
+              </div>
               <div>
-                <h2>Choose Your Parameters</h2>
+                <header className='header header-ext'> filter list </header>
                 {paramsArr.map((param, index) => {
                   return (
                     <button
+                      className='btn-filter-list'
                       key={index}
                       name={param.name}
                       onClick={() => this.addBtn(param)}
@@ -258,34 +284,10 @@ class Build extends Component {
                   );
                 })}
               </div>
-              <div>
-                <h2>Build Your Query</h2>
-                {this.state.params.map((param, index) => {
-                  return (
-                    <div>
-                      <button key={index} name={param.name}>
-                        <span
-                          onClick={() =>
-                            this.state.edit !== param
-                              ? this.edit(param, index)
-                              : this.edit("", "")
-                          }
-                        >
-                          {param.name}
-                        </span>
-                        <span onClick={() => this.removeBtn(index)}>X</span>
-                      </button>
-                      {this.state.edit === param
-                        ? this.renderSwitch(param.type)
-                        : console.log("No param selected.")}
-                    </div>
-                  );
-                })}
-              </div>
-              <h2>
+              <p>
                 Click "Submit" once you're done setting all your desired
                 parameters!
-              </h2>
+              </p>
               <SubmitQuery query={this.buildQuery()} />
             </Fragment>
           );

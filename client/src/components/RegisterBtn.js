@@ -6,7 +6,8 @@ class RegisterBtn extends Component {
     render() {
         return (
             <Link to="/register">
-                <button>Register</button>
+                {/* <button>Register</button> */}
+                Register
             </Link>
         );
     }
