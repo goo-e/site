@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 
+import '../styles/login-btn.css';
+
 class LoginBtn extends Component {
     render() {
         return (
-            <Link to="/login">
-                <button>Login</button>
+            <Link className='nav-text' to="/login">
+                {/* <button>sign in</button> */}
+                sign in
             </Link>
         );
     }

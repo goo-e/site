@@ -307,27 +307,14 @@ class Build extends Component {
           }
           return (
             <Fragment>
-              <div>
-                <h2>Choose Your Parameters</h2>
-                {paramsArr.map((param, index) => {
-                  return (
-                    <button
-                      key={index}
-                      name={param.name}
-                      onClick={() => this.addBtn(param)}
-                    >
-                      {param.name}
-                    </button>
-                  );
-                })}
-              </div>
-              <div>
-                <h2>Build Your Query</h2>
+              <div className='user-filters-container'>
+                <header className='header header-ext'>your filters</header>
                 {this.state.params.map((param, index) => {
                   return (
                     <div>
-                      <button key={index} name={param.name}>
+                      <button className='btn-user-filter' key={index} name={param.name}>
                         <span
+                          className='user-filter-label'
                           onClick={() =>
                             this.state.edit !== param
                               ? this.edit(param, index)
@@ -336,12 +323,27 @@ class Build extends Component {
                         >
                           {param.name}
                         </span>
-                        <span onClick={() => this.removeBtn(index)}>X</span>
+                        <span id='x-spaces' onClick={() => this.removeBtn(index)}>X</span>
                       </button>
                       {this.state.edit === param
                         ? this.renderSwitch(param.type)
                         : console.log(`${param.name} not selected.`)}
                     </div>
+                  );
+                })}
+              </div>
+              <div>
+                <header className='header header-ext'> filter list </header>
+                {paramsArr.map((param, index) => {
+                  return (
+                    <button
+                      className='btn-filter-list'
+                      key={index}
+                      name={param.name}
+                      onClick={() => this.addBtn(param)}
+                    >
+                      {param.name}
+                    </button>
                   );
                 })}
               </div>

@@ -10,6 +10,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Logo, LoginBtn, LogoutBtn, RegisterBtn } from "./components";
 import { Consumer } from "./context";
 
+import "./styles/global-app.css";
+
+
 class GlobalApp extends Component {
   render() {
     return (
@@ -18,13 +21,15 @@ class GlobalApp extends Component {
           const { pageLoad, isAuthenticated } = value;
           if (!isAuthenticated) {
             pageLoad();
-            return (
-              <Router>
+          }
+          return (
+            <Router>
+              <div className='container-all'>
                 <div className="App">
-                  <nav>
-                    <Logo />
+                  <nav className='nav-container'>
                     <LoginBtn />
                     <RegisterBtn />
+                    <Logo />
                     <Link to="/build">
                       <p>build</p>
                     </Link>
