@@ -39,16 +39,16 @@ class GlobalApp extends Component {
             return (
               <Router>
                 <div className="App">
-                  <nav>
+                  <nav className="nav-container">
                     <LogoutBtn />
                     <Link to="/prefs">
-                      <p>preferences</p>
+                      <button>preferences</button>
                     </Link>
                     {/* <Link to="/build">
                       <p>build</p>
                     </Link> */}
                     <Link to="/about">
-                      <p>about</p>
+                      <button>about</button>
                     </Link>
                     <Logo />
                   </nav>
