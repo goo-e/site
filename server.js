@@ -21,13 +21,3 @@ app.use(routes);
 app.listen(PORT, function() {
   console.log(`API server now listening on port ${PORT}`);
 });
-
-//======probably don't need this stuff anymore - see config/db.js=======
-
-// const mongoose = require("mongoose");
-
-// const dbName = "appDB";
-
-// mongoose.connect(process.env.MONGODV_URI || `mongodb://localhost/${dbName}`, {
-//   useNewUrlParser: true
-// });

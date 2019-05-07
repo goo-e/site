@@ -34,11 +34,17 @@ const LoginComp = () => {
       };
       const body = JSON.stringify(User);
       const res = await checkUser(body, config);
-
+      const errorMsg = res.data.error;
+      if (errorMsg) {
+        setFormData({
+          ...formData,
+          errorMsg: errorMsg
+        });
+      }
       const token = res.data.token;
       const cookies = new Cookies();
-      cookies.set("token", token);
       if (token) {
+        cookies.set("token", token);
         setAuthToken(token);
         const res = await axios.get("/api/auth");
         dispatch({
@@ -60,6 +66,9 @@ const LoginComp = () => {
             <h1>sign in</h1>
             <p>sign into your account</p>
             <form onSubmit={event => onSubmit(event, dispatch)}>
+              {formData.errorMsg && (
+                <div className="error-message">{formData.errorMsg}</div>
+              )}
               <div>
                 <input
                   type="email"
