@@ -40,18 +40,14 @@ authRouter.post(
       //see if user exists
       let user = await User.findOne({ email });
       if (!user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "Invalid credentials" }] });
+        return res.send({ error: "invalid credentials" });
       }
 
       //check if password is correct
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "Invalid credentials" }] });
+        return res.send({ error: "invalid credentials" });
       }
       //return jsonwebtoken
       const payload = {

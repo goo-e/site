@@ -12,7 +12,8 @@ const RegisterComp = () => {
     name: "",
     email: "",
     password: "",
-    password2: ""
+    password2: "",
+    errorMsg: ""
   });
   const { name, email, password, password2 } = formData;
   const onChange = event =>
@@ -40,11 +41,17 @@ const RegisterComp = () => {
         };
         const body = JSON.stringify(newUser);
         const res = await addUser(body, config);
+        const errorMsg = res.data.error;
+        if (errorMsg) {
+          setFormData({
+            ...formData,
+            errorMsg: errorMsg
+          });
+        }
         const token = res.data.token;
         const cookies = new Cookies();
-        cookies.set("token", token);
-        console.log("check user token:", token);
         if (token) {
+          cookies.set("token", token);
           setAuthToken(token);
           const res = await axios.get("/api/auth");
           dispatch({
@@ -66,6 +73,9 @@ const RegisterComp = () => {
             <h1>sign up</h1>
             <p>create Your Account</p>
             <form onSubmit={event => onSubmit(event, dispatch, user)}>
+              {formData.errorMsg && (
+                <div className="error-message">{formData.errorMsg}</div>
+              )}
               <div>
                 <input
                   type="text"
