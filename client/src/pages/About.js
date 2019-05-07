@@ -33,11 +33,11 @@ class About extends Component {
             <div>
               {!isAuthenticated && (
                 <nav className="nav-container">
-                  <Logo />
                   <button onClick={() => this.onClickLogin()}>sign in</button>
                   <button onClick={() => this.onClickRegister()}>
                     sign up
                   </button>
+                  <Logo />
                 </nav>
               )}
               <div>
@@ -47,7 +47,7 @@ class About extends Component {
                   alt="logo lockup"
                 />
               </div>
-              <div className="about-test-site-container">
+              <div className="about-text-site-container">
                 <div className="about-text-site">
                   <header className="about-title-site">what's goophur?</header>
                   <p>
@@ -58,14 +58,15 @@ class About extends Component {
                     just sign up to the right, then install the extension here
                     to get searching!
                   </p>
+                  <Download />
                 </div>
                 {!isAuthenticated && (
                   <div className="login-container">
                     {!this.state.isRegistering ? (
                       <Fragment>
                         <LoginComp />
-                        <p>
-                          Do not have an account?{" "}
+                        <p className='form-footer-text'>
+                          need an account?{" "}
                           <button onClick={() => this.onClickRegister()}>
                             {" "}
                             sign up{" "}
@@ -75,7 +76,7 @@ class About extends Component {
                     ) : (
                       <Fragment>
                         <RegisterComp />
-                        <p>
+                        <p className='form-footer-text'>
                           Already have an account?{" "}
                           <button onClick={() => this.onClickLogin()}>
                             {" "}
@@ -86,7 +87,7 @@ class About extends Component {
                     )}
                   </div>
                 )}
-                <Download />
+                {/* <Download /> */}
               </div>
             </div>
           );

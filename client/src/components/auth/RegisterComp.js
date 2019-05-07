@@ -70,36 +70,37 @@ const RegisterComp = () => {
         const { dispatch, user } = value;
         return (
           <Fragment>
-            <h1>sign up</h1>
-            <p>create Your Account</p>
-            <form onSubmit={event => onSubmit(event, dispatch, user)}>
+            {/* <div id='header-bg'></div> */}
+            <p id='form-header'>sign up</p>
+            <p id='form-header-sub'>create your account</p>
+            <form className='form-input-container' onSubmit={event => onSubmit(event, dispatch, user)}>
               {formData.errorMsg && (
                 <div className="error-message">{formData.errorMsg}</div>
               )}
+              <label>name: </label>
               <div>
                 <input
                   type="text"
-                  placeholder="Name"
                   name="name"
                   value={name}
                   onChange={event => onChange(event)}
                   required
                 />
               </div>
+              <label>email: </label>
               <div>
                 <input
                   type="email"
-                  placeholder="Email Address"
                   name="email"
                   value={email}
                   onChange={event => onChange(event)}
                   required
                 />
               </div>
+              <label>password: </label>
               <div>
                 <input
                   type="password"
-                  placeholder="Password"
                   name="password"
                   minLength="8"
                   value={password}
@@ -107,10 +108,10 @@ const RegisterComp = () => {
                   required
                 />
               </div>
+              <label>password confirm: </label>
               <div>
                 <input
                   type="password"
-                  placeholder="Confirm Password"
                   name="password2"
                   minLength="8"
                   value={password2}
@@ -118,7 +119,7 @@ const RegisterComp = () => {
                   required
                 />
               </div>
-              <input type="submit" value="sign up" />
+              <input className='form-submit-btn' type="submit" value="sign up" />
             </form>
           </Fragment>
         );

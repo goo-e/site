@@ -40,7 +40,6 @@ class GlobalApp extends Component {
               <Router>
                 <div className="App">
                   <nav>
-                    <Logo />
                     <LogoutBtn />
                     <Link to="/prefs">
                       <p>preferences</p>
@@ -51,6 +50,7 @@ class GlobalApp extends Component {
                     <Link to="/about">
                       <p>about</p>
                     </Link>
+                    <Logo />
                   </nav>
                   <div className="App-header">
                     <Switch>

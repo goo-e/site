@@ -66,7 +66,7 @@ button {
   margin: 5px 5px;
   border: none;
   border-radius: 2px;
-  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.25), 0px 3px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
 
   background: #457e44;
 }
@@ -136,6 +136,76 @@ body {
   display: inline-block;
   padding: 0 10px;
 }
+
+.login-container {
+  color: #457e44;
+  
+  padding: 5px 20px;
+  margin: -1% 10%;
+  height: 450px;
+  background: url("../assets/login-bg-2.png");
+  border-radius: 2px;
+
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* #header-bg {
+  absolute: relative;
+  top: 0;
+  width:334px;
+} */
+
+#form-header {
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 5px;
+
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#form-header-sub {
+  color: #ffffff;
+  margin-top: 5px;
+  margin-bottom: 40px;
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  min-width: 300px;
+  font-size: 14px;
+}
+
+input {
+  font-family: Poppins;
+  font-weight: regular;
+  color: #457e44;
+  font-size: 12px;
+  margin-bottom: 5px;
+  width: 200px;
+}
+
+.form-submit-btn {
+  background: #457e44;
+  color: #ffffff;
+  margin-top: 20px;
+  width: 300px;
+  height: 30px;
+  border-radius: 2px;
+  border: none;
+  
+  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.25), 0px 3px 4px rgba(0, 0, 0, 0.25);
+}
+
+.form-footer-text {
+  font-size: 12px;
+}
+
 /* ***************************              EXTENSION              ***************************** */
 /* ***************************    POSITIONING AND CUSTOM STYLES    ***************************** */
 
