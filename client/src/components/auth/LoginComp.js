@@ -63,26 +63,27 @@ const LoginComp = () => {
         const { dispatch } = value;
         return (
           <Fragment>
-            <h1>sign in</h1>
-            <p>sign into your account</p>
-            <form onSubmit={event => onSubmit(event, dispatch)}>
+            {/* <div id='header-bg'></div> */}
+            <p id='form-header'>sign in</p>
+            <p id='form-header-sub'>sign into your account</p>
+            <form className='form-input-container' onSubmit={event => onSubmit(event, dispatch)}>
               {formData.errorMsg && (
                 <div className="error-message">{formData.errorMsg}</div>
               )}
+              <label> email </label>
               <div>
                 <input
                   type="email"
-                  placeholder="Email Address"
                   name="email"
                   value={email}
                   onChange={event => onChange(event)}
                   required
                 />
               </div>
+              <label>password</label>
               <div>
                 <input
                   type="password"
-                  placeholder="Password"
                   name="password"
                   minLength="8"
                   value={password}
@@ -90,7 +91,7 @@ const LoginComp = () => {
                   required
                 />
               </div>
-              <input type="submit" value="sign in" />
+              <input className='form-submit-btn' type="submit" value="sign in" />
             </form>
           </Fragment>
         );
