@@ -4,7 +4,7 @@ const { check, validationResult } = require("express-validator/check");
 const auth = require("../../middleware/auth");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
-const config = require("config");
+const secret = process.env.jwtSecret;
 
 //@route   POST api/user
 //@desc    Register user
@@ -59,7 +59,7 @@ userRouter.post(
         }
       };
 
-      jwt.sign(payload, config.get("jwtSecret"), (err, token) => {
+      jwt.sign(payload, secret, (err, token) => {
         if (err) throw err;
         res.json({ token });
       });
