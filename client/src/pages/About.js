@@ -49,14 +49,15 @@ class About extends Component {
               </div>
               <div className="about-text-site-container">
                 <div className="about-text-site">
-                  <header className="about-title-site">what's goophur?</header>
+                  <header className="about-title-site">What's goophur?</header>
                   <p>
-                    goophur makes it easy & fun for anyone to use the powerful
-                    filter tools offered by Google search.
+                    Goophur is a chrome extension that makes it easy to use the powerful
+                    filter tools offered by Google advanced search. Search for exact matches, 
+                    exclude words from your results, filter for dollar amounts
+                     and more.
                     <br />
                     <br />
-                    just sign up to the right, then install the extension here
-                    to get searching!
+                    Download the extension to get searching!
                   </p>
                   <Download />
                 </div>

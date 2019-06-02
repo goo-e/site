@@ -26,9 +26,12 @@
 /* ========== =sets up backup fonts if montserrat fails ============*/
 
 body {
-  font-family: "Poppins", "Roboto", sans-serif;
   color: #ffffff;
-  width: 100vw;
+
+  font-family: "Poppins", "Roboto", sans-serif;
+  
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
 /* ***************************    COMPONENTS, GENERAL STYLES AND FONTS    ***************************** */
@@ -53,10 +56,12 @@ body {
 }
 
 button {
+  color: #ffffff;
+  background: #457e44;
+
   font-family: Poppins;
   font-weight: 500;
   font-size: 12px;
-  color: #ffffff;
 
   position: relative;
   line-height: 19px;
@@ -67,8 +72,6 @@ button {
   border-radius: 2px;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
 
-  background: #457e44;
-
   transition: all .2s ease-in-out; 
 }
 
@@ -77,49 +80,50 @@ button:hover {
 }
 
 .single-input-field {
+  background: #ffffff;
+  
   position: absolute;
   width: 251px;
   height: 59px;
 
-  background: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .single-input-field-header {
+  background: #457e44;
+
   position: relative;
   width: 251px;
   height: 25px;
   top: 0%;
-
-  background: #457e44;
 }
 
 .single-input-field-header-label {
+    color: #ffffff;
+     
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
   font-size: 10px;
   line-height: 15px;
-
-  color: #ffffff;
 }
 
 .single-input-field-header-info {
+  color: #ffffff;
+
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
   font-size: 8px;
   line-height: 12px;
   text-align: right;
-
-  color: #ffffff;
 }
 
 /* ***************************                SITE                 ***************************** */
 /* ***************************    POSITIONING AND CUSTOM STYLES    ***************************** */
 
 body {
-  background-color: #71c46f;
+  background: #71c46f;
 }
 
 .nav-container {
@@ -131,13 +135,16 @@ body {
 
 .nav-text {
   color: #ffffff;
+
   font-size: 12px;
+
   margin: 0 5px;
 }
 
 .error-message {
   color: white;
   background-color: rgb(255, 84, 84);
+
   display: inline-block;
   padding: 0 10px;
 }
@@ -146,7 +153,7 @@ body {
   color: #457e44;
   
   padding: 5px 20px;
-  margin: -1% 10%;
+  margin: 0 10%;
   height: 450px;
   background: url("../assets/login-bg-2.png");
   border-radius: 2px;
@@ -161,10 +168,12 @@ body {
 } */
 
 #form-header {
+  color: #ffffff;
+
   font-family: Poppins;
   font-weight: 600;
   font-size: 24px;
-  color: #ffffff;
+
   margin-bottom: 5px;
 
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -172,6 +181,7 @@ body {
 
 #form-header-sub {
   color: #ffffff;
+
   margin-top: 5px;
   margin-bottom: 40px;
 }
@@ -182,25 +192,29 @@ body {
 }
 
 label {
-  min-width: 300px;
   font-size: 14px;
+
+  min-width: 300px;
 }
 
 input {
+  color: #457e44;
+
   font-family: Poppins;
   font-weight: regular;
-  color: #457e44;
   font-size: 12px;
+
   margin-bottom: 5px;
   width: 200px;
 }
 
 .form-submit-btn {
+  color: #ffffff;
   background: #457e44;
   
   font-size: 14px;
   font-weight: 500;
-  color: #ffffff;
+
   margin-top: 20px;
   width: 300px;
   height: 30px;
@@ -211,7 +225,8 @@ input {
   transition: all .2s ease-in-out;
 }
 
-.form-submit-btn:hover { transform: scale(1.05); 
+.form-submit-btn:hover { 
+  transform: scale(1.05); 
 }
 
 .form-footer-text {
@@ -233,6 +248,7 @@ input {
 
 .form-group {
   background: #ffffff;
+
   width: 200px;
   border-radius: 0 0 2px 2px;
   margin-left: 10px;
@@ -241,9 +257,10 @@ input {
 }
 
 #x-spaces {
+  text-align: right;
+  
   position: absolute;
   right: 10px;
-  text-align: right;
 }
 
 .btn-user-filter {

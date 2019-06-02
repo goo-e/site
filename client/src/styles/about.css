@@ -19,12 +19,13 @@
 .about-text-site {
   font-size: 20px;
   font-weight: 400;
-  max-width: 35%;
+  
+  max-width: 45%;
 }
 
 .about-text-site-container {
   display: flex;
   flex-wrap: wrap;
   margin-top: 2%;
-  margin-left: 20%;
+  margin-left: 12%;
 }

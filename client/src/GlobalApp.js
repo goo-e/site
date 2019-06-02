@@ -48,7 +48,7 @@ class GlobalApp extends Component {
                       <p>build</p>
                     </Link> */}
                     <Link to="/about">
-                      <button>about</button>
+                      <button>download</button>
                     </Link>
                     <Logo />
                   </nav>
