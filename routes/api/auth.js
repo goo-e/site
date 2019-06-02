@@ -3,8 +3,9 @@ const auth = require("../../middleware/auth");
 const User = require("../../models/User");
 const { check, validationResult } = require("express-validator/check");
 const jwt = require("jsonwebtoken");
-const config = require("config");
 const bcrypt = require("bcryptjs");
+
+const secret = process.env.jwtSecret;
 
 //@route   GET api/auth
 //@desc    Test route
@@ -40,18 +41,14 @@ authRouter.post(
       //see if user exists
       let user = await User.findOne({ email });
       if (!user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "Invalid credentials" }] });
+        return res.send({ error: "invalid credentials" });
       }
 
       //check if password is correct
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "Invalid credentials" }] });
+        return res.send({ error: "invalid credentials" });
       }
       //return jsonwebtoken
       const payload = {
@@ -60,15 +57,10 @@ authRouter.post(
         }
       };
 
-      jwt.sign(
-        payload,
-        config.get("jwtSecret"),
-        { expiresIn: 3600 },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
+      jwt.sign(payload, secret, (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      });
     } catch (err) {
       console.error(err.message);
       res.status(500).send("server error");

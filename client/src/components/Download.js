@@ -1,10 +1,20 @@
 import React, { Component } from "react";
-import API from "../utils/API";
+
+import "../styles/download.css"
 
 class Download extends Component {
     render() {
         return(
-            <button>Download the extension here!</button>
+            <button className='chrome-add-button'>
+              <p className='download-p'>
+                add to chrome
+              </p>
+              <img 
+                className='chrome-logo'
+                src={require('./../assets/chrome-logo.png')} 
+                alt='logo' 
+              />
+            </button>
         );
     }
 }

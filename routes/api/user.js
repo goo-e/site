@@ -1,9 +1,10 @@
 const userRouter = require("express").Router();
 const bcrypt = require("bcryptjs");
 const { check, validationResult } = require("express-validator/check");
+const auth = require("../../middleware/auth");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
-const config = require("config");
+const secret = process.env.jwtSecret;
 
 //@route   POST api/user
 //@desc    Register user
@@ -33,9 +34,7 @@ userRouter.post(
       //see if user already exists
       let user = await User.findOne({ email });
       if (user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "User already exists" }] });
+        return res.send({ error: "user already exists" });
       }
 
       //create new instance of User if doesn't already exist
@@ -60,20 +59,25 @@ userRouter.post(
         }
       };
 
-      jwt.sign(
-        payload,
-        config.get("jwtSecret"),
-        { expiresIn: 3600 },
-        (err, token) => {
-          if (err) throw err;
-          res.json({ token });
-        }
-      );
+      jwt.sign(payload, secret, (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      });
     } catch (err) {
       console.error(err.message);
       res.status(500).send("server error");
     }
   }
 );
+
+userRouter.put("/", auth, (req, res) => {
+  const { id, params } = req.body;
+
+  User.findByIdAndUpdate(id, { prefs: params }, { new: true }, (err, user) => {
+    // Handle any possible database errors
+    if (err) return res.status(500).send(err);
+    return res.send(user);
+  }).select("-password");
+});
 
 module.exports = userRouter;

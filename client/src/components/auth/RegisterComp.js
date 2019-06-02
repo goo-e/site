@@ -1,7 +1,10 @@
 import React, { Fragment, useState } from "react";
 import { Consumer } from "../../context";
-import { Link } from "react-router-dom";
 import userFunctions from "../../utils/API";
+import Cookies from "universal-cookie";
+import setAuthToken from "../../utils/setAuthToken";
+import axios from "axios";
+
 const { addUser } = userFunctions;
 
 const RegisterComp = () => {
@@ -9,7 +12,8 @@ const RegisterComp = () => {
     name: "",
     email: "",
     password: "",
-    password2: ""
+    password2: "",
+    errorMsg: ""
   });
   const { name, email, password, password2 } = formData;
   const onChange = event =>
@@ -18,7 +22,7 @@ const RegisterComp = () => {
       [event.target.name]: event.target.value
     });
 
-  const onSubmit = async (event, dispatch) => {
+  const onSubmit = async (event, dispatch, user) => {
     event.preventDefault();
     if (password !== password2) {
       console.log("Passwords do not match");
@@ -36,46 +40,67 @@ const RegisterComp = () => {
           }
         };
         const body = JSON.stringify(newUser);
-        await addUser(body, config);
+        const res = await addUser(body, config);
+        const errorMsg = res.data.error;
+        if (errorMsg) {
+          setFormData({
+            ...formData,
+            errorMsg: errorMsg
+          });
+        }
+        const token = res.data.token;
+        const cookies = new Cookies();
+        if (token) {
+          cookies.set("token", token);
+          setAuthToken(token);
+          const res = await axios.get("/api/auth");
+          dispatch({
+            type: "USER_LOADED",
+            payload: res.data
+          });
+        }
       } catch (err) {
         console.error(err.response.data);
       }
-      dispatch({ type: "STORE_USER", payload: newUser });
     }
   };
   return (
     <Consumer>
       {value => {
-        const { dispatch } = value;
+        const { dispatch, user } = value;
         return (
           <Fragment>
-            <h1>Sign Up</h1>
-            <p>Create Your Account</p>
-            <form onSubmit={event => onSubmit(event, dispatch)}>
+            {/* <div id='header-bg'></div> */}
+            <p id='form-header'>sign up</p>
+            <p id='form-header-sub'>create your account</p>
+            <form className='form-input-container' onSubmit={event => onSubmit(event, dispatch, user)}>
+              {formData.errorMsg && (
+                <div className="error-message">{formData.errorMsg}</div>
+              )}
+              <label>name: </label>
               <div>
                 <input
                   type="text"
-                  placeholder="Name"
                   name="name"
                   value={name}
                   onChange={event => onChange(event)}
                   required
                 />
               </div>
+              <label>email: </label>
               <div>
                 <input
                   type="email"
-                  placeholder="Email Address"
                   name="email"
                   value={email}
                   onChange={event => onChange(event)}
                   required
                 />
               </div>
+              <label>password: </label>
               <div>
                 <input
                   type="password"
-                  placeholder="Password"
                   name="password"
                   minLength="8"
                   value={password}
@@ -83,10 +108,10 @@ const RegisterComp = () => {
                   required
                 />
               </div>
+              <label>password confirm: </label>
               <div>
                 <input
                   type="password"
-                  placeholder="Confirm Password"
                   name="password2"
                   minLength="8"
                   value={password2}
@@ -94,11 +119,8 @@ const RegisterComp = () => {
                   required
                 />
               </div>
-              <input type="submit" value="Register" />
+              <input className='form-submit-btn' type="submit" value="sign up" />
             </form>
-            <p>
-              Already have an account? <Link to="/login">Sign In</Link>
-            </p>
           </Fragment>
         );
       }}

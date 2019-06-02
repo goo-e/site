@@ -1,7 +1,10 @@
 import React, { Fragment, useState } from "react";
 import { Consumer } from "../../context";
-import { Link } from "react-router-dom";
 import userFunctions from "../../utils/API";
+import Cookies from "universal-cookie";
+import setAuthToken from "../../utils/setAuthToken";
+import axios from "axios";
+
 const { checkUser } = userFunctions;
 
 const LoginComp = () => {
@@ -30,36 +33,57 @@ const LoginComp = () => {
         }
       };
       const body = JSON.stringify(User);
-      await checkUser(body, config);
+      const res = await checkUser(body, config);
+      const errorMsg = res.data.error;
+      if (errorMsg) {
+        setFormData({
+          ...formData,
+          errorMsg: errorMsg
+        });
+      }
+      const token = res.data.token;
+      const cookies = new Cookies();
+      if (token) {
+        cookies.set("token", token);
+        setAuthToken(token);
+        const res = await axios.get("/api/auth");
+        dispatch({
+          type: "USER_LOADED",
+          payload: res.data
+        });
+      }
     } catch (err) {
       console.error(err.response.data);
     }
-    dispatch({ type: "STORE_USER", payload: User });
   };
+
   return (
     <Consumer>
       {value => {
         const { dispatch } = value;
-
         return (
           <Fragment>
-            <h1>Sign In</h1>
-            <p>Sign into your account</p>
-            <form onSubmit={event => onSubmit(event, dispatch)}>
+            {/* <div id='header-bg'></div> */}
+            <p id='form-header'>sign in</p>
+            <p id='form-header-sub'>sign into your account</p>
+            <form className='form-input-container' onSubmit={event => onSubmit(event, dispatch)}>
+              {formData.errorMsg && (
+                <div className="error-message">{formData.errorMsg}</div>
+              )}
+              <label> email </label>
               <div>
                 <input
                   type="email"
-                  placeholder="Email Address"
                   name="email"
                   value={email}
                   onChange={event => onChange(event)}
                   required
                 />
               </div>
+              <label>password</label>
               <div>
                 <input
                   type="password"
-                  placeholder="Password"
                   name="password"
                   minLength="8"
                   value={password}
@@ -67,11 +91,8 @@ const LoginComp = () => {
                   required
                 />
               </div>
-              <input type="submit" value="Login" />
+              <input className='form-submit-btn' type="submit" value="sign in" />
             </form>
-            <p>
-              Don't have an account? <Link to="/register">Sign up</Link>
-            </p>
           </Fragment>
         );
       }}

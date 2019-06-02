@@ -1,11 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 
-const SavePrefs = () => {
-  return (
-    <div>
-        <button>Save Changes</button>
-    </div>
-  );
+class SavePrefs extends Component {
+  render() {
+    return (
+      <div>
+        <button onClick={this.props.onClick}>Save Changes</button>
+      </div>
+    );
+  }
 }
 
 export default SavePrefs;

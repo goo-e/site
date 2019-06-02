@@ -1,21 +1,13 @@
 import axios from "axios";
-import Cookies from "universal-cookie";
 
 const userFunctions = {
   addUser: (userData, config) => {
-    axios.post("/api/user", userData, config).then(res => {
-      const token = res.data.token;
-      const cookies = new Cookies();
-      cookies.set("token", token);
-    });
+    return axios.post("/api/user", userData, config);
   },
   checkUser: (email, config) => {
-    axios.post("/api/auth", email, config).then(res => {
-      const token = res.data.token;
-      const cookies = new Cookies();
-      cookies.set("token", token);
-    });
+    return axios.post("/api/auth", email, config);
   }
+
   //update user
   //- password
   //- email

@@ -1,0 +1,24 @@
+.chrome-add-button {
+  position: relative;
+  margin-left: 10%;
+  margin-top: 7%;
+  width: 300px; 
+  height: 100px;
+  /* line-height: 100px; */
+
+  font-size: 20px;
+}
+
+.download-p {
+  position: absolute;
+  text-align: center;
+  top: 20px;
+  left: 40px;
+}
+
+.chrome-logo {
+  position: absolute;
+  top:25px;
+  right: 40px;
+  width: 50px;
+}

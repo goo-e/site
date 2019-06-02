@@ -1,0 +1,284 @@
+/* ========= importing fonts from assets file and formatting for browser ========= */
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-Regular.ttf") format("truetype");
+  src: url("../assets/fonts/Poppins-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-Medium.ttf") format("truetype");
+  src: url("../assets/fonts/Poppins-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../assets/fonts/Poppins-SemiBold.ttf") format("truetype");
+  src: url("../assets/fonts/Poppins-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* ========== =sets up backup fonts if montserrat fails ============*/
+
+body {
+  font-family: "Poppins", "Roboto", sans-serif;
+  color: #ffffff;
+  width: 100vw;
+}
+
+/* ***************************    COMPONENTS, GENERAL STYLES AND FONTS    ***************************** */
+
+.app {
+  background: #71c46f;
+}
+
+.logo-lockup-medium {
+  width: 218px;
+  height: 75px;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.header {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  font-family: Poppins;
+  font-weight: 500;
+  font-size: 12px;
+  color: #ffffff;
+
+  position: relative;
+  line-height: 19px;
+  padding: 4px 15px;
+  width: auto;
+  margin: 5px 5px;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+
+  background: #457e44;
+
+  transition: all .2s ease-in-out; 
+}
+
+button:hover { 
+  transform: scale(1.1); 
+}
+
+.single-input-field {
+  position: absolute;
+  width: 251px;
+  height: 59px;
+
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.single-input-field-header {
+  position: relative;
+  width: 251px;
+  height: 25px;
+  top: 0%;
+
+  background: #457e44;
+}
+
+.single-input-field-header-label {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 15px;
+
+  color: #ffffff;
+}
+
+.single-input-field-header-info {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 12px;
+  text-align: right;
+
+  color: #ffffff;
+}
+
+/* ***************************                SITE                 ***************************** */
+/* ***************************    POSITIONING AND CUSTOM STYLES    ***************************** */
+
+body {
+  background-color: #71c46f;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.nav-text {
+  color: #ffffff;
+  font-size: 12px;
+  margin: 0 5px;
+}
+
+.error-message {
+  color: white;
+  background-color: rgb(255, 84, 84);
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.login-container {
+  color: #457e44;
+  
+  padding: 5px 20px;
+  margin: -1% 10%;
+  height: 450px;
+  background: url("../assets/login-bg-2.png");
+  border-radius: 2px;
+
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* #header-bg {
+  absolute: relative;
+  top: 0;
+  width:334px;
+} */
+
+#form-header {
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 5px;
+
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#form-header-sub {
+  color: #ffffff;
+  margin-top: 5px;
+  margin-bottom: 40px;
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  min-width: 300px;
+  font-size: 14px;
+}
+
+input {
+  font-family: Poppins;
+  font-weight: regular;
+  color: #457e44;
+  font-size: 12px;
+  margin-bottom: 5px;
+  width: 200px;
+}
+
+.form-submit-btn {
+  background: #457e44;
+  
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  margin-top: 20px;
+  width: 300px;
+  height: 30px;
+  border-radius: 2px;
+  border: none;
+  
+  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.25), 0px 3px 4px rgba(0, 0, 0, 0.25);
+  transition: all .2s ease-in-out;
+}
+
+.form-submit-btn:hover { transform: scale(1.05); 
+}
+
+.form-footer-text {
+  font-size: 12px;
+}
+
+/* ***************************              EXTENSION              ***************************** */
+/* ***************************    POSITIONING AND CUSTOM STYLES    ***************************** */
+
+.header-text {
+  margin-top: 10%;
+  margin-bottom: 3%;
+}
+
+.user-filters-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  background: #ffffff;
+  width: 200px;
+  border-radius: 0 0 2px 2px;
+  margin-left: 10px;
+
+  z-index: 1;
+}
+
+#x-spaces {
+  position: absolute;
+  right: 10px;
+  text-align: right;
+}
+
+.btn-user-filter {
+  text-align: left;
+
+  width: 200px;
+  border-radius: 2px 2px 0 0;
+  margin-left: 10px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+
+  z-index: 0;
+  box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.25), 0px 3px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.input-field {
+  position: absolute;
+  left: 35px;
+  top: 188px;
+}
+
+.header-filter-list {
+  position: absolute;
+  left: 35px;
+  top: 266px;
+}
+
+.btn-filter-list {
+  position: absolute;
+  left: 35px;
+  top: 299px;
+}
+
+/* ************************ effect ************************ */
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }
