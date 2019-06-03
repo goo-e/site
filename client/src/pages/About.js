@@ -33,31 +33,41 @@ class About extends Component {
             <div>
               {!isAuthenticated && (
                 <nav className="nav-container">
-                  <button onClick={() => this.onClickLogin()}>sign in</button>
-                  <button onClick={() => this.onClickRegister()}>
-                    sign up
+                  <button 
+                    class='nav-text'
+                    onClick={() => this.onClickLogin()}
+                  >
+                    SIGN IN
+                  </button>
+                  <button 
+                    onClick={() => this.onClickRegister()}
+                    class='nav-text'  
+                  >
+                    SIGN UP
                   </button>
                   <Logo />
                 </nav>
               )}
-              <div>
+              {/* <div>
                 <img
                   className="logo-lockup-site"
                   src={require("./../assets/goophur-lockup-site.png")}
                   alt="logo lockup"
                 />
-              </div>
+              </div> */}
               <div className="about-text-site-container">
                 <div className="about-text-site">
-                  <header className="about-title-site">What's goophur?</header>
+                  <header className="about-title-site">
+                    Empower your Googling
+                  </header>
                   <p>
-                    Goophur is a chrome extension that makes it easy to use the powerful
-                    filter tools offered by Google advanced search. Search for exact matches, 
-                    exclude words from your results, filter for dollar amounts
-                     and more.
+                    There are over 5 billion Google searches every day, but most people don't know
+                    about the search tools that Google Advanced Search offers -
+                    <b>goophur</b> is a chrome extension that makes it easy to use these powerful
+                    filter tools.
                     <br />
                     <br />
-                    Download the extension to get searching!
+                    Download the extension & sign up to get searching!
                   </p>
                   <Download />
                 </div>

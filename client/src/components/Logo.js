@@ -9,9 +9,14 @@ class Logo extends Component {
       <Link to="/">
         <img
           className="logo-nav"
+          src={require("./../assets/goophur-lockup-site.png")}
+          alt="logo lockup"
+        />
+        {/* <img
+          className="logo-nav"
           src={require("./../assets/logo-nav.png")}
           alt="logo"
-        />
+        /> */}
       </Link>
     );
   }

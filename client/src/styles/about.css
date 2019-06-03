@@ -10,6 +10,7 @@
 }
 
 .about-title-site {
+  color: #ffffff;
   font-size: 40px;
   font-weight: 600;
 
@@ -17,15 +18,15 @@
 }
 
 .about-text-site {
+  color: #ffffff;
   font-size: 20px;
   font-weight: 400;
-  
-  max-width: 45%;
+
+  max-width: 60%;
 }
 
 .about-text-site-container {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 2%;
-  margin-left: 12%;
+  margin-top: 7%;
 }
