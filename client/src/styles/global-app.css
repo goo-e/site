@@ -300,3 +300,44 @@ input {
 
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.1); }
+
+
+/* ************************ media queries ************************ */
+@media screen and (max-width: 1250px) {
+  body {
+    margin-right: 8%;
+    margin-left: 8%;
+  }
+  
+  .login-container {    
+    position: absolute;
+    right: 8%;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .login-container {    
+    position: relative;
+    align-self: center;
+    margin-bottom: 5%;
+    margin-left: 16%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .login-container {    
+    position: relative;
+    /* align-self: center; */
+    margin-bottom: 5%;
+    margin-left: 32px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .login-container {    
+    position: relative;
+    /* align-self: center; */
+    margin-bottom: 5%;
+    margin-left: 12px;
+  }
+}

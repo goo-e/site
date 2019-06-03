@@ -1,5 +1,6 @@
 .chrome-add-button {
   font-size: 20px;
+
   position: relative;
   margin-left: 20%;
   margin-top: 7%;
@@ -21,4 +22,13 @@
   top:15px;
   right: 20px;
   width: 40px;
+}
+
+/**************************  media queries  ****************************/
+@media screen and (max-width: 1060px) {
+  .chrome-add-button {  
+    align-self: center;
+    flex-shrink: 0;
+    margin: 5px 0 40px;
+  }
 }

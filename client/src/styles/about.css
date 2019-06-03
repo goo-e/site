@@ -30,3 +30,31 @@
   flex-wrap: wrap;
   margin-top: 7%;
 }
+
+/**************************  media queries  ****************************/
+@media screen and (max-width: 1250px) {
+  .about-text-site {
+    font-size: 20px;
+    font-weight: 400;
+  
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .about-text-site-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 7%;
+  }
+  
+  .about-text-site {
+    font-size: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+}
