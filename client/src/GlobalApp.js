@@ -42,13 +42,21 @@ class GlobalApp extends Component {
                   <nav className="nav-container">
                     <LogoutBtn />
                     <Link to="/prefs">
-                      <button>preferences</button>
+                      <button
+                        class='nav-text'
+                      >
+                        SETTINGS
+                      </button>
                     </Link>
                     {/* <Link to="/build">
                       <p>build</p>
                     </Link> */}
-                    <Link to="/about">
-                      <button>about</button>
+                    <Link to="/about">  
+                      <button
+                        class='nav-text'
+                      >
+                        DOWNLOAD
+                      </button>
                     </Link>
                     <Logo />
                   </nav>

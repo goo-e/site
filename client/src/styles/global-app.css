@@ -26,16 +26,15 @@
 /* ========== =sets up backup fonts if montserrat fails ============*/
 
 body {
-  font-family: "Poppins", "Roboto", sans-serif;
   color: #ffffff;
-  width: 100vw;
+  font-family: "Poppins", "Roboto", sans-serif;
+
+  margin: 0 15%;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 
 /* ***************************    COMPONENTS, GENERAL STYLES AND FONTS    ***************************** */
-
-.app {
-  background: #71c46f;
-}
 
 .logo-lockup-medium {
   width: 218px;
@@ -53,10 +52,12 @@ body {
 }
 
 button {
+  color: #ffffff;
+  background: #457e44;
+
   font-family: Poppins;
   font-weight: 500;
   font-size: 12px;
-  color: #ffffff;
 
   position: relative;
   line-height: 19px;
@@ -67,8 +68,6 @@ button {
   border-radius: 2px;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
 
-  background: #457e44;
-
   transition: all .2s ease-in-out; 
 }
 
@@ -77,49 +76,52 @@ button:hover {
 }
 
 .single-input-field {
+  background: #ffffff;
+  
   position: absolute;
   width: 251px;
   height: 59px;
 
-  background: #ffffff;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .single-input-field-header {
+  background: #457e44;
+
   position: relative;
   width: 251px;
   height: 25px;
   top: 0%;
-
-  background: #457e44;
 }
 
 .single-input-field-header-label {
+    color: #ffffff;
+     
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
   font-size: 10px;
   line-height: 15px;
-
-  color: #ffffff;
 }
 
 .single-input-field-header-info {
+  color: #ffffff;
+
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
   font-size: 8px;
   line-height: 12px;
   text-align: right;
-
-  color: #ffffff;
 }
 
 /* ***************************                SITE                 ***************************** */
 /* ***************************    POSITIONING AND CUSTOM STYLES    ***************************** */
 
 body {
-  background-color: #71c46f;
+  background: #71c46f;
+  margin-right: 15%;
+  margin-left: 15%;
 }
 
 .nav-container {
@@ -131,25 +133,31 @@ body {
 
 .nav-text {
   color: #ffffff;
-  font-size: 12px;
-  margin: 0 5px;
+  font-size: .9em;
+  background: none;
+  
+  margin: 25px 5px 0 0;
+
+  box-shadow: none;
 }
 
 .error-message {
   color: white;
   background-color: rgb(255, 84, 84);
+
   display: inline-block;
   padding: 0 10px;
 }
 
 .login-container {
-  color: #457e44;
+  color: #343636;
   
+  position: absolute;
   padding: 5px 20px;
-  margin: -1% 10%;
+  right: 15%;
   height: 450px;
   background: url("../assets/login-bg-2.png");
-  border-radius: 2px;
+  border-radius: 4px;
 
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.25);
 }
@@ -161,10 +169,12 @@ body {
 } */
 
 #form-header {
+  color: #ffffff;
+
   font-family: Poppins;
   font-weight: 600;
   font-size: 24px;
-  color: #ffffff;
+
   margin-bottom: 5px;
 
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -172,6 +182,7 @@ body {
 
 #form-header-sub {
   color: #ffffff;
+
   margin-top: 5px;
   margin-bottom: 40px;
 }
@@ -182,25 +193,29 @@ body {
 }
 
 label {
-  min-width: 300px;
   font-size: 14px;
+
+  min-width: 300px;
 }
 
 input {
+  color: #457e44;
+
   font-family: Poppins;
   font-weight: regular;
-  color: #457e44;
   font-size: 12px;
+
   margin-bottom: 5px;
   width: 200px;
 }
 
 .form-submit-btn {
+  color: #ffffff;
   background: #457e44;
   
   font-size: 14px;
   font-weight: 500;
-  color: #ffffff;
+
   margin-top: 20px;
   width: 300px;
   height: 30px;
@@ -211,11 +226,40 @@ input {
   transition: all .2s ease-in-out;
 }
 
-.form-submit-btn:hover { transform: scale(1.05); 
+.form-submit-btn:hover { 
+  transform: scale(1.05); 
 }
 
 .form-footer-text {
   font-size: 12px;
+}
+
+/* ***************************              PREFS PAGE              ***************************** */
+.prefs-header {
+  font-size: 40px;
+  font-weight: 600;
+
+  margin-top: 6%;
+  margin-bottom: 2%;
+
+  text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.prefs-body {
+  font-size: 18px;
+  font-weight: 400;
+
+  margin-bottom: 4%;
+}
+
+.save-prefs {
+  margin-top: 5%;
+  margin-bottom: 15%;
+  padding: 10px 15px;
+}
+
+.delete-x {
+  padding-left: 10px;
 }
 
 /* ***************************              EXTENSION              ***************************** */
@@ -233,6 +277,7 @@ input {
 
 .form-group {
   background: #ffffff;
+
   width: 200px;
   border-radius: 0 0 2px 2px;
   margin-left: 10px;
@@ -241,9 +286,10 @@ input {
 }
 
 #x-spaces {
+  text-align: right;
+  
   position: absolute;
   right: 10px;
-  text-align: right;
 }
 
 .btn-user-filter {
@@ -282,3 +328,66 @@ input {
 
 .grow { transition: all .2s ease-in-out; }
 .grow:hover { transform: scale(1.1); }
+
+
+/* ************************ media queries ************************ */
+@media screen and (max-width: 1250px) {
+  body {
+    margin-right: 8%;
+    margin-left: 8%;
+  }
+  
+  .login-container {    
+    position: absolute;
+    right: 8%;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .login-container {    
+    position: relative;
+    align-self: center;
+    margin-bottom: 5%;
+    margin-left: 16%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .login-container {    
+    position: relative;
+    /* align-self: center; */
+    margin-bottom: 5%;
+    margin-left: 32px;
+  }
+
+  .nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 5%;
+    margin-right: -4%;
+  }
+
+  .nav-text {
+    margin:0;
+  }
+
+  .prefs-header {
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  .prefs-body {
+    color: #ffffff;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .login-container {    
+    position: relative;
+    /* align-self: center; */
+    margin-bottom: 5%;
+    margin-left: 12px;
+  }
+}

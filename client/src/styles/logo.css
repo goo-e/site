@@ -1,8 +1,21 @@
 .logo-nav {
-  width: 35px ;
-  margin: 5px 20px 5px 10px;
-  /* position: absolute;
-  top: 0;
-  right: 0; */
+  width: 130px ;
+  margin: 0 20px 5px 0;
+  position: absolute;
+  left: 15%;
 }
 
+
+
+@media screen and (max-width: 1250px) {
+  .logo-nav {
+    left: 8%;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .logo-nav {
+    left: 8%;
+    top: 2%;
+  }
+}

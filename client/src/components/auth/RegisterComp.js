@@ -72,7 +72,7 @@ const RegisterComp = () => {
           <Fragment>
             {/* <div id='header-bg'></div> */}
             <p id='form-header'>sign up</p>
-            <p id='form-header-sub'>create your account</p>
+            <p id='form-header-sub'>sign up for additional features</p>
             <form className='form-input-container' onSubmit={event => onSubmit(event, dispatch, user)}>
               {formData.errorMsg && (
                 <div className="error-message">{formData.errorMsg}</div>

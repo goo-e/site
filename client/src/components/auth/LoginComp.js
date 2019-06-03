@@ -65,7 +65,7 @@ const LoginComp = () => {
           <Fragment>
             {/* <div id='header-bg'></div> */}
             <p id='form-header'>sign in</p>
-            <p id='form-header-sub'>sign into your account</p>
+            <p id='form-header-sub'>sign in to your account</p>
             <form className='form-input-container' onSubmit={event => onSubmit(event, dispatch)}>
               {formData.errorMsg && (
                 <div className="error-message">{formData.errorMsg}</div>
