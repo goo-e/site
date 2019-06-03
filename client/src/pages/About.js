@@ -48,13 +48,6 @@ class About extends Component {
                   <Logo />
                 </nav>
               )}
-              {/* <div>
-                <img
-                  className="logo-lockup-site"
-                  src={require("./../assets/goophur-lockup-site.png")}
-                  alt="logo lockup"
-                />
-              </div> */}
               <div className="about-text-site-container">
                 <div className="about-text-site">
                   <header className="about-title-site">
@@ -98,7 +91,15 @@ class About extends Component {
                     )}
                   </div>
                 )}
-                {/* <Download /> */}
+                {isAuthenticated && (
+                  <div>
+                    <img
+                      className="logo-large"
+                      src={require("./../assets/goophur.svg")}
+                      alt="logo lockup"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           );

@@ -9,6 +9,13 @@
   margin-right: auto;
 }
 
+.logo-large {
+  position: absolute;
+  right: 15%;
+  display: block;
+  width: 22em;
+}
+
 .about-title-site {
   color: #ffffff;
   font-size: 40px;
@@ -56,6 +63,10 @@
     flex-direction: column;
     flex-wrap: wrap;
     max-width: 100%;
+  }
+
+  .logo-large {
+    display:none;
   }
 }
 

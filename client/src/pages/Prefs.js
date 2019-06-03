@@ -158,7 +158,12 @@ class Prefs extends Component {
                   return (
                     <button key={index} name={param.name}>
                       {param.name}
-                      <span onClick={() => this.removeBtn(index)}>X</span>
+                      <span 
+                        onClick={() => this.removeBtn(index)}
+                        class='delete-x'
+                      >
+                        X
+                      </span>
                     </button>
                   );
                 })}

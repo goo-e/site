@@ -255,6 +255,11 @@ input {
 .save-prefs {
   margin-top: 5%;
   margin-bottom: 15%;
+  padding: 10px 15px;
+}
+
+.delete-x {
+  padding-left: 10px;
 }
 
 /* ***************************              EXTENSION              ***************************** */
