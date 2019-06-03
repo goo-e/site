@@ -128,8 +128,13 @@ class Prefs extends Component {
           }
           return (
             <Fragment>
-              <div>
-                <h2>Choose Your Parameters</h2>
+              <div class='prefs-container'>
+                <h2 class='prefs-header'>Choose Your Parameters</h2>
+                <p class='prefs-body'>
+                  Take a look at the list of filters we offer below. To adjust the 
+                  default filters that come up when you start a new search, just click on the filters
+                  you want to add. When you're finished, make sure to hit <b>SAVE CHANGES</b> at the bottom.
+                </p>
                 {paramsArr.map((param, index) => {
                   return (
                     <button
@@ -142,8 +147,13 @@ class Prefs extends Component {
                   );
                 })}
               </div>
-              <div>
-                <h2>Your Default Query Parameters</h2>
+              <div class='prefs-container'>
+                <h2 class='prefs-header'>Your Default Search Parameters</h2>
+                <p class='prefs-body'>
+                  Below are your current preset filters for a goophur search - each time you open goophur to create
+                  a new search, these filters will be included. If you want to remove one, just click on the 'X' on
+                  the right side of the button and click <b>SAVE CHANGES</b>.
+                </p>
                 {this.state.params.map((param, index) => {
                   return (
                     <button key={index} name={param.name}>

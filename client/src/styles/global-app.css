@@ -234,6 +234,29 @@ input {
   font-size: 12px;
 }
 
+/* ***************************              PREFS PAGE              ***************************** */
+.prefs-header {
+  font-size: 40px;
+  font-weight: 600;
+
+  margin-top: 6%;
+  margin-bottom: 2%;
+
+  text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+}
+
+.prefs-body {
+  font-size: 18px;
+  font-weight: 400;
+
+  margin-bottom: 4%;
+}
+
+.save-prefs {
+  margin-top: 5%;
+  margin-bottom: 15%;
+}
+
 /* ***************************              EXTENSION              ***************************** */
 /* ***************************    POSITIONING AND CUSTOM STYLES    ***************************** */
 
@@ -342,6 +365,16 @@ input {
 
   .nav-text {
     margin:0;
+  }
+
+  .prefs-header {
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  .prefs-body {
+    color: #ffffff;
+    font-size: 16px;
   }
 }
 

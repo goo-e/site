@@ -4,7 +4,12 @@ class SavePrefs extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.onClick}>Save Changes</button>
+        <button 
+          onClick={this.props.onClick}
+          class='save-prefs'
+        >
+          SAVE CHANGES
+        </button>
       </div>
     );
   }

@@ -62,8 +62,8 @@ class About extends Component {
                   </header>
                   <p>
                     There are over 5 billion Google searches every day, but most people don't know
-                    about the search tools that Google Advanced Search offers -
-                    <b>goophur</b> is a chrome extension that makes it easy to use these powerful
+                    about the search tools that Google Advanced Search offers
+                    - <b>goophur</b> is a chrome extension that makes it easy to use these powerful
                     filter tools.
                     <br />
                     <br />
