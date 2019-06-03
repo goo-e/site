@@ -60,7 +60,7 @@ class About extends Component {
                     filter tools.
                     <br />
                     <br />
-                    Download the extension & sign up to get searching!
+                    Download the <b>goophur</b> Chrome extension to get searching!
                   </p>
                   <Download />
                 </div>
