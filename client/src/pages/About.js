@@ -58,7 +58,7 @@ class About extends Component {
               <div className="about-text-site-container">
                 <div className="about-text-site">
                   <header className="about-title-site">
-                    Empower your Googling
+                    Google Better with Goophur
                   </header>
                   <p>
                     There are over 5 billion Google searches every day, but most people don't know

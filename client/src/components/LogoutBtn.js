@@ -22,7 +22,12 @@ class LogoutBtn extends Component {
           const { dispatch } = value;
           return (
             <Link to="/">
-              <button onClick={() => this.onClick(dispatch)}>sign out</button>
+              <button 
+                onClick={() => this.onClick(dispatch)}
+                class='nav-text'
+              >
+                SIGN OUT
+              </button>
             </Link>
           );
         }}
