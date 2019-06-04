@@ -2,7 +2,7 @@
 A web app that provides the user with a GUI to facilitate the process of customizing search engine queries.
 
 ## Visit
-You can visit the deployed site at the following URL: https://goophur.herokuapp.com/
+You can visit the deployed site at the following URL: https://goophur.herokuapp.com
 
 ## Overview
 Goophur makes it easy and fun for anyone to use the powerful query customization tools offered by the Google search engine. The more highly specialized the query (e.g., the greater the number of filters, the more specific the search term(s) to which a given filter is applied, etc.), the more utility Goophur offers to the user.
@@ -46,3 +46,46 @@ Goophur is a MERN stack (MongoDB, Express, React.js, Node.js) app built using MV
 * The Prefs component's state contains the array "params," whose contents determine which buttons appear in the "Your Default Query Parameters" section of the Prefs page. These same buttons will also be saved to the user's document in the database via a put request once the user clicks the "Save Changes" button. Before saving the changes, the user can change the array's contents in the state in two ways:
   - by clicking on a button in the "Choose Your Parameters" section to add a copy of it to the "Your Default Query Parameters" section
   - by clicking the "X" on a button in the "Your Default Query Parameters" section to remove the button from the section (and thereby remove that copy of the parameter from the "params" array in the state)
+
+## Demo
+
+1. On the home page (if not logged in), you will be prompted to sign up.
+![alt text](demo/01.png)
+
+2. Enter a name, email, and password, then click the "sign up" button to register as a new user.
+![alt text](demo/02.png)
+
+3. Upon signing up, you will be redirected to the Prefs page where you can set your default query parameters in order to make the extension more convenient to use.
+![alt text](demo/03.png)
+
+4. Clicking on a button in the "Choose Your Parameters" section will copy it to the "Your Default Query Parameters" section below in order to confirm that it has been staged as a change to be saved. In this example, the user clicked on the "Exact Match" button.
+![alt text](demo/04.png)
+
+5. The user then clicked on the "Wild Card" button, adding a copy of the "Wild Card" parameter to the user's default settings.
+![alt text](demo/05.png)
+
+6. You can also delete a parameter from your settings by clicking the "X" on its button in the "Your Default Query Parameters" section. In this example, the user chose to delete the "Wild Card" button.
+![alt text](demo/06.png)
+
+7. After the user clicked on the "Wild Card" button to delete it, this change was immediately reflected on the page: the "Wild Card" button vanished from the "Your Default Query Parameters" section.
+![alt text](demo/07.png)
+
+8. You can then click on the "Save Changes" button to save the query parameters currently appearing in the "Your Default Query Parameters" section.
+![alt text](demo/08.png)
+
+9. Clicking on the "about" button will return you to the home page.
+![alt text](demo/09.png)
+![alt text](demo/10.png)
+
+10. You can click the "sign out" button at the upper-right corner of the window to log off.
+![alt text](demo/11.png)
+
+11. Upon signing out, you will be prompted to sign up again. However, you can click on the "sign in" button to log in as a registered user.
+![alt text](demo/12.png)
+
+12. Upon clicking the "sign in" button, you will be prompted to enter the email and password you used to sign up.
+![alt text](demo/13.png)
+![alt text](demo/14.png)
+
+13. Upon successfully signing in, you will be redirected to the Prefs page, where you will see your most recent saved changes and can edit them again if desired. In this example, the only saved parameter is "Exact Match," since "Wild Card" was deleted earlier.
+![alt text](demo/15.png)
