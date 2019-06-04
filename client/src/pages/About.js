@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import Download from "../components/Download";
-
 import "../styles/about.css";
 import LoginComp from "../components/auth/LoginComp";
 import RegisterComp from "../components/auth/RegisterComp";
@@ -9,7 +9,7 @@ import { Consumer } from "../context";
 
 class About extends Component {
   state = {
-    isRegistering: true
+    isRegistering: !window.location.href.includes("/login")
   };
 
   onClickLogin() {
@@ -33,18 +33,22 @@ class About extends Component {
             <div>
               {!isAuthenticated && (
                 <nav className="nav-container">
-                  <button 
-                    class='nav-text'
-                    onClick={() => this.onClickLogin()}
-                  >
-                    SIGN IN
-                  </button>
-                  <button 
-                    onClick={() => this.onClickRegister()}
-                    class='nav-text'  
-                  >
-                    SIGN UP
-                  </button>
+                  <Link to="/login">
+                    <button 
+                      class='nav-text'
+                      onClick={() => this.onClickLogin()}
+                    >
+                      SIGN IN
+                    </button>
+                  </Link>
+                  <Link to="/register">
+                    <button 
+                      onClick={() => this.onClickRegister()}
+                      class='nav-text'  
+                    >
+                      SIGN UP
+                    </button>
+                  </Link>
                   <Logo />
                 </nav>
               )}
@@ -71,10 +75,12 @@ class About extends Component {
                         <LoginComp />
                         <p className='form-footer-text'>
                           need an account?{" "}
-                          <button onClick={() => this.onClickRegister()}>
-                            {" "}
-                            sign up{" "}
-                          </button>
+                          <Link to="/register">
+                            <button onClick={() => this.onClickRegister()}>
+                              {" "}
+                              sign up{" "}
+                            </button>
+                          </Link>
                         </p>
                       </Fragment>
                     ) : (
@@ -82,10 +88,12 @@ class About extends Component {
                         <RegisterComp />
                         <p className='form-footer-text'>
                           Already have an account?{" "}
-                          <button onClick={() => this.onClickLogin()}>
-                            {" "}
-                            sign in{" "}
-                          </button>
+                          <Link to="/login">
+                            <button onClick={() => this.onClickLogin()}>
+                              {" "}
+                              sign in{" "}
+                            </button>
+                          </Link>
                         </p>
                       </Fragment>
                     )}
