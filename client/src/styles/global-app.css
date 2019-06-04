@@ -25,13 +25,21 @@
 
 /* ========== =sets up backup fonts if montserrat fails ============*/
 
+html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   color: #ffffff;
   font-family: "Poppins", "Roboto", sans-serif;
 
-  margin: 0 15%;
+  margin:0;
+  padding: 0;
   max-width: 100vw;
-  max-height: 100vh;
+  /* background: #71c46f;
+  margin-right: 15%;
+  margin-left: 15%; */
 }
 
 /* ***************************    COMPONENTS, GENERAL STYLES AND FONTS    ***************************** */
@@ -73,6 +81,10 @@ button {
 
 button:hover { 
   transform: scale(1.1); 
+}
+
+button:active, button:hover {
+  outline-color: darkgreen;
 }
 
 .single-input-field {
@@ -117,12 +129,6 @@ button:hover {
 
 /* ***************************                SITE                 ***************************** */
 /* ***************************    POSITIONING AND CUSTOM STYLES    ***************************** */
-
-body {
-  background: #71c46f;
-  margin-right: 15%;
-  margin-left: 15%;
-}
 
 .nav-container {
   display: flex;
@@ -207,7 +213,7 @@ input {
   font-size: 12px;
 
   margin-bottom: 5px;
-  width: 200px;
+  width: 98%;
 }
 
 .form-submit-btn {
@@ -333,14 +339,21 @@ input {
 
 /* ************************ media queries ************************ */
 @media screen and (max-width: 1250px) {
-  body {
+  /* body {
     margin-right: 8%;
     margin-left: 8%;
-  }
+  } */
   
+  .nav-container {
+    margin: 0; 
+  }
+
   .login-container {    
     position: absolute;
     right: 8%;
+  }
+  .nav-text{
+    margin: 25px 0 0 0;;
   }
 }
 
@@ -358,15 +371,26 @@ input {
     position: relative;
     /* align-self: center; */
     margin-bottom: 5%;
-    margin-left: 32px;
+    margin-left: 6.5%;
+  }
+
+  input {
+    background: rgb(228, 237, 237);
+    border-style: solid;
+    border-width: 1px;
+    width: 98%;
   }
 
   .nav-container {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin-top: 5%;
+    padding-top: 7%;
     margin-right: -4%;
+  }
+
+  .nav-text {
+    margin-top:0;
   }
 
   .prefs-header {
@@ -385,6 +409,6 @@ input {
     position: relative;
     /* align-self: center; */
     margin-bottom: 5%;
-    margin-left: 12px;
+    margin-left: 1.6%;
   }
 }
