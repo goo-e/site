@@ -29,6 +29,8 @@ class GlobalApp extends Component {
                         <Redirect exact from="/prefs" to="/about" />
                         {/* <Redirect exact from="/edit" to="/about" /> */}
                         <Route path="/" component={About} />
+                        <Route path="/login" component={About} />
+                        <Route path="/register" component={About} />
                       </Switch>
                     </div>
                   </div>
