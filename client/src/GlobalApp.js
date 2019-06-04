@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import About from "./pages/About";
-import Build from "./pages/Build";
+// import Build from "./pages/Build";
 // import EditAccount from "./pages/EditAccount";
 import Prefs from "./pages/Prefs";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -25,7 +25,7 @@ class GlobalApp extends Component {
                     <div className="App-header">
                       <Switch>
                         {/* <Route exact path="/about" component={About} /> */}
-                        <Route path="/build" component={Build} />
+                        {/* <Route path="/build" component={Build} /> */}
                         <Redirect exact from="/prefs" to="/about" />
                         {/* <Redirect exact from="/edit" to="/about" /> */}
                         <Route path="/" component={About} />
@@ -54,7 +54,7 @@ class GlobalApp extends Component {
                   </nav>
                   <div className="App-header">
                     <Switch>
-                      <Route path="/build" component={Build} />
+                      {/* <Route path="/build" component={Build} /> */}
                       <Route path="/about" component={About} />
                       {/* <Route path="/edit" component={EditAccount} /> */}
                       <Route path="/prefs" component={Prefs} />
