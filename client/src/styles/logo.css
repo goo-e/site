@@ -9,13 +9,13 @@
 
 @media screen and (max-width: 1250px) {
   .logo-nav {
-    left: 8%;
+    left: 10%;
   }
 }
 
 @media screen and (max-width: 420px) {
   .logo-nav {
-    left: 8%;
+    left: 10%;
     top: 2%;
   }
 }
