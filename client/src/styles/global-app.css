@@ -25,6 +25,10 @@
 
 /* ========== =sets up backup fonts if montserrat fails ============*/
 
+.App {
+  background: #457e44;
+}
+
 html {
   margin: 0;
   padding: 0;
