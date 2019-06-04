@@ -9,7 +9,15 @@
   margin-right: auto;
 }
 
+.logo-large {
+  position: absolute;
+  right: 15%;
+  display: block;
+  width: 22em;
+}
+
 .about-title-site {
+  color: #ffffff;
   font-size: 40px;
   font-weight: 600;
 
@@ -17,14 +25,54 @@
 }
 
 .about-text-site {
+  color: #ffffff;
   font-size: 20px;
   font-weight: 400;
-  max-width: 35%;
+
+  max-width: 60%;
 }
 
 .about-text-site-container {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 2%;
-  margin-left: 20%;
+  margin-top: 12%;
+}
+
+/**************************  media queries  ****************************/
+@media screen and (max-width: 1250px) {
+  .about-text-site {
+    font-size: 20px;
+    font-weight: 400;
+  
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .about-text-site-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 12%;
+  }
+  
+  .about-text-site {
+    font-size: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  .logo-large {
+    display:none;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .about-text-site {
+    color: #ffffff;
+    font-size: 16px;
+  }
 }

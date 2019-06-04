@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import Download from "../components/Download";
-
 import "../styles/about.css";
 import LoginComp from "../components/auth/LoginComp";
 import RegisterComp from "../components/auth/RegisterComp";
@@ -9,7 +9,7 @@ import { Consumer } from "../context";
 
 class About extends Component {
   state = {
-    isRegistering: true
+    isRegistering: !window.location.href.includes("/login")
   };
 
   onClickLogin() {
@@ -33,30 +33,38 @@ class About extends Component {
             <div>
               {!isAuthenticated && (
                 <nav className="nav-container">
-                  <button onClick={() => this.onClickLogin()}>sign in</button>
-                  <button onClick={() => this.onClickRegister()}>
-                    sign up
-                  </button>
+                  <Link to="/login">
+                    <button 
+                      class='nav-text'
+                      onClick={() => this.onClickLogin()}
+                    >
+                      SIGN IN
+                    </button>
+                  </Link>
+                  <Link to="/register">
+                    <button 
+                      onClick={() => this.onClickRegister()}
+                      class='nav-text'  
+                    >
+                      SIGN UP
+                    </button>
+                  </Link>
                   <Logo />
                 </nav>
               )}
-              <div>
-                <img
-                  className="logo-lockup-site"
-                  src={require("./../assets/goophur-lockup-site.png")}
-                  alt="logo lockup"
-                />
-              </div>
               <div className="about-text-site-container">
                 <div className="about-text-site">
-                  <header className="about-title-site">what's goophur?</header>
+                  <header className="about-title-site">
+                    Google Better with Goophur
+                  </header>
                   <p>
-                    goophur makes it easy & fun for anyone to use the powerful
-                    filter tools offered by Google search.
+                    There are over 5 billion Google searches every day, but most people don't know
+                    about the search tools that Google Advanced Search offers
+                    - <b>goophur</b> is a chrome extension that makes it easy to use these powerful
+                    filter tools.
                     <br />
                     <br />
-                    just sign up to the right, then install the extension here
-                    to get searching!
+                    Download the <b>goophur</b> Chrome extension to get searching!
                   </p>
                   <Download />
                 </div>
@@ -67,10 +75,12 @@ class About extends Component {
                         <LoginComp />
                         <p className='form-footer-text'>
                           need an account?{" "}
-                          <button onClick={() => this.onClickRegister()}>
-                            {" "}
-                            sign up{" "}
-                          </button>
+                          <Link to="/register">
+                            <button onClick={() => this.onClickRegister()}>
+                              {" "}
+                              sign up{" "}
+                            </button>
+                          </Link>
                         </p>
                       </Fragment>
                     ) : (
@@ -78,16 +88,26 @@ class About extends Component {
                         <RegisterComp />
                         <p className='form-footer-text'>
                           Already have an account?{" "}
-                          <button onClick={() => this.onClickLogin()}>
-                            {" "}
-                            sign in{" "}
-                          </button>
+                          <Link to="/login">
+                            <button onClick={() => this.onClickLogin()}>
+                              {" "}
+                              sign in{" "}
+                            </button>
+                          </Link>
                         </p>
                       </Fragment>
                     )}
                   </div>
                 )}
-                {/* <Download /> */}
+                {isAuthenticated && (
+                  <div>
+                    <img
+                      className="logo-large"
+                      src={require("./../assets/goophur.svg")}
+                      alt="logo lockup"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           );

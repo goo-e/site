@@ -7,7 +7,7 @@ class Download extends Component {
         return(
             <button className='chrome-add-button'>
               <p className='download-p'>
-                add to chrome
+                download goophur
               </p>
               <img 
                 className='chrome-logo'
