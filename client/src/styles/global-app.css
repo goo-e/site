@@ -135,6 +135,7 @@ body {
   color: #ffffff;
   font-size: .9em;
   background: none;
+  outline: none;
   
   margin: 25px 5px 0 0;
 
@@ -366,10 +367,6 @@ input {
     align-items: flex-end;
     margin-top: 5%;
     margin-right: -4%;
-  }
-
-  .nav-text {
-    margin:0;
   }
 
   .prefs-header {

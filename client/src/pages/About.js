@@ -109,6 +109,11 @@ class About extends Component {
                   </div>
                 )}
               </div>
+              <div className='how-it-works-container'>
+                <header className='how-it-works-title'>
+                  How Goophur Works
+                </header>
+             </div>
             </div>
           );
         }}
