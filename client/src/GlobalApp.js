@@ -41,7 +41,7 @@ class GlobalApp extends Component {
             return (
               <Router>
                 <div className="App">
-                  <nav className="nav-container">
+                  <nav className="nav-container-logged-in">
                     <LogoutBtn />
                     <Link to="/prefs">
                       <button
